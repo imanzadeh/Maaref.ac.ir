@@ -449,67 +449,103 @@ Route::post('/alumni/store','AlumniAssociationController@store')->name('alumni_s
 Route::get('/alumni/list','AlumniAssociationController@list')->name('alumni_list');
 Route::get('/alumni/detail/{alumniAssociation}','AlumniAssociationController@detail')->name('alumni_detail');
 
+//Alumni Jquery Lists
 Route::get('/alumni/getCityList/{province}','AlumniAssociationController@getCityList')->name('alumni.getCityList');
 Route::get('/alumni/getOrientationList/{orientation}','AlumniAssociationController@getOrientationList')->name('alumni.getOrientationList');
 Route::get('/alumni/getGradeList','AlumniAssociationController@getGradeList')->name('alumni.getGradeList');
 Route::get('/alumni/getTrainingCenterList/{trainingCenterTypeId}','AlumniAssociationController@getTrainingCenterList')->name('alumni.getTrainingCenterList');
 
+//seminary_academic_degree_history
 Route::get('/seminary_academic_degree_history/create','SeminaryAcademicDegreeHistoriesController@create')->name('seminary_academic_degree_history.create');
 Route::post('/seminary_academic_degree_history/store','SeminaryAcademicDegreeHistoriesController@store')->name('seminary_academic_degree_history.store');
-Route::get('/seminary_academic_degree_history/delete/{seminaryAcademicDegreeHistory}','SeminaryAcademicDegreeHistoriesController@destroy')->name('seminary_academic_degree_history.delete');
-Route::get('/seminary_academic_degree_history/edit/{seminaryAcademicDegreeHistory}','SeminaryAcademicDegreeHistoriesController@edit')->name('seminary_academic_degree_history.edit');
-Route::patch('/seminary_academic_degree_history/update/{seminaryAcademicDegreeHistory}','SeminaryAcademicDegreeHistoriesController@update')->name('seminary_academic_degree_history.update');
+Route::get('/seminary_academic_degree_history/delete/{seminaryAcademicDegreeHistory}',
+    'SeminaryAcademicDegreeHistoriesController@destroy')->name('seminary_academic_degree_history.delete');
+Route::get('/seminary_academic_degree_history/edit/{seminaryAcademicDegreeHistory}/{fieldsOtherValue?}',
+    'SeminaryAcademicDegreeHistoriesController@edit')->name('seminary_academic_degree_history.edit');
+Route::patch('/seminary_academic_degree_history/update/{seminaryAcademicDegreeHistory}/{fieldsOtherValue?}',
+    'SeminaryAcademicDegreeHistoriesController@update')->name('seminary_academic_degree_history.update');
 
+//college_education_history
 Route::get('/college_education_history/create','CollegeEducationHistoriesController@create')->name('college_education_history.create');
 Route::post('/college_education_history/store','CollegeEducationHistoriesController@store')->name('college_education_history.store');
-Route::get('/college_education_history/delete/{collegeEducationHistory}','CollegeEducationHistoriesController@destroy')->name('college_education_history.delete');
-Route::get('/college_education_history/edit/{collegeEducationHistory}','CollegeEducationHistoriesController@edit')->name('college_education_history.edit');
-Route::patch('/college_education_history/update/{collegeEducationHistory}','CollegeEducationHistoriesController@update')->name('college_education_history.update');
+Route::get('/college_education_history/delete/{collegeEducationHistory}/{fieldsOtherValue?}',
+    'CollegeEducationHistoriesController@destroy')->name('college_education_history.delete');
+Route::get('/college_education_history/edit/{collegeEducationHistory}/{fieldsOtherValue?}',
+    'CollegeEducationHistoriesController@edit')->name('college_education_history.edit');
+Route::patch('/college_education_history/update/{collegeEducationHistory}/{fieldsOtherValue?}',
+    'CollegeEducationHistoriesController@update')->name('college_education_history.update');
 
-
+//educational_experience
 Route::get('/educational_experience/create','EducationalExperiencesController@create')->name('educational_experience.create');
 Route::post('/educational_experience/store','EducationalExperiencesController@store')->name('educational_experience.store');
-Route::get('/educational_experience/delete/{educationalExperience}','EducationalExperiencesController@destroy')->name('educational_experience.delete');
-Route::get('/educational_experience/edit/{educationalExperience}','EducationalExperiencesController@edit')->name('educational_experience.edit');
-Route::patch('/educational_experience/update/{educationalExperience}','EducationalExperiencesController@update')->name('educational_experience.update');
+Route::get('/educational_experience/delete/{educationalExperience}/{fieldsOtherValue?}',
+    'EducationalExperiencesController@destroy')->name('educational_experience.delete');
+Route::get('/educational_experience/edit/{educationalExperience}/{fieldsOtherValue?}',
+    'EducationalExperiencesController@edit')->name('educational_experience.edit');
+Route::patch('/educational_experience/update/{educationalExperience}/{fieldsOtherValue?}',
+    'EducationalExperiencesController@update')->name('educational_experience.update');
 
-
+//research_activity_record
 Route::get('/research_activity_record/create','ResearchActivityRecordsController@create')->name('research_activity_record.create');
 Route::post('/research_activity_record/store','ResearchActivityRecordsController@store')->name('research_activity_record.store');
-Route::get('/research_activity_record/delete/{researchActivityRecord}','ResearchActivityRecordsController@destroy')->name('research_activity_record.delete');
-Route::get('/research_activity_record/edit/{researchActivityRecord}','ResearchActivityRecordsController@edit')->name('research_activity_record.edit');
-Route::patch('/research_activity_record/update/{researchActivityRecord}','ResearchActivityRecordsController@update')->name('research_activity_record.update');
+Route::get('/research_activity_record/delete/{researchActivityRecord}/{fieldsOtherValue?}',
+    'ResearchActivityRecordsController@destroy')->name('research_activity_record.delete');
+Route::get('/research_activity_record/edit/{researchActivityRecord}/{fieldsOtherValue?}',
+    'ResearchActivityRecordsController@edit')->name('research_activity_record.edit');
+Route::patch('/research_activity_record/update/{researchActivityRecord}/{fieldsOtherValue?}',
+    'ResearchActivityRecordsController@update')->name('research_activity_record.update');
 
+//advertising_record
 Route::get('/advertising_record/create','AdvertisingRecordsController@create')->name('advertising_record.create');
 Route::post('/advertising_record/store','AdvertisingRecordsController@store')->name('advertising_record.store');
-Route::get('/advertising_record/delete/{advertisingRecord}','AdvertisingRecordsController@destroy')->name('advertising_record.delete');
-Route::get('/advertising_record/edit/{advertisingRecord}','AdvertisingRecordsController@edit')->name('advertising_record.edit');
-Route::patch('/advertising_record/update/{advertisingRecord}','AdvertisingRecordsController@update')->name('advertising_record.update');
+Route::get('/advertising_record/delete/{advertisingRecord}/{fieldsOtherValue?}',
+    'AdvertisingRecordsController@destroy')->name('advertising_record.delete');
+Route::get('/advertising_record/edit/{advertisingRecord}/{fieldsOtherValue?}',
+    'AdvertisingRecordsController@edit')->name('advertising_record.edit');
+Route::patch('/advertising_record/update/{advertisingRecord}/{fieldsOtherValue?}',
+    'AdvertisingRecordsController@update')->name('advertising_record.update');
 
+//employment_record
 Route::get('/employment_record/create','EmploymentRecordsController@create')->name('employment_record.create');
 Route::post('/employment_record/store','EmploymentRecordsController@store')->name('employment_record.store');
-Route::get('/employment_record/delete/{employmentRecord}','EmploymentRecordsController@destroy')->name('employment_record.delete');
-Route::get('/employment_record/edit/{employmentRecord}','EmploymentRecordsController@edit')->name('employment_record.edit');
-Route::patch('/employment_record/update/{employmentRecord}','EmploymentRecordsController@update')->name('employment_record.update');
+Route::get('/employment_record/delete/{employmentRecord}/{fieldsOtherValue?}',
+    'EmploymentRecordsController@destroy')->name('employment_record.delete');
+Route::get('/employment_record/edit/{employmentRecord}/{fieldsOtherValue?}',
+    'EmploymentRecordsController@edit')->name('employment_record.edit');
+Route::patch('/employment_record/update/{employmentRecord}/{fieldsOtherValue?}',
+    'EmploymentRecordsController@update')->name('employment_record.update');
 
+//teaching_license
 Route::get('/teaching_license/create','TeachingLicensesController@create')->name('teaching_license.create');
 Route::post('/teaching_license/store','TeachingLicensesController@store')->name('teaching_license.store');
-Route::get('/teaching_license/delete/{teachingLicense}','TeachingLicensesController@destroy')->name('teaching_license.delete');
-Route::get('/teaching_license/edit/{teachingLicense}','TeachingLicensesController@edit')->name('teaching_license.edit');
-Route::patch('/teaching_license/update/{teachingLicense}','TeachingLicensesController@update')->name('teaching_license.update');
+Route::get('/teaching_license/delete/{teachingLicense}/{fieldsOtherValue?}',
+    'TeachingLicensesController@destroy')->name('teaching_license.delete');
+Route::get('/teaching_license/edit/{teachingLicense}/{fieldsOtherValue?}',
+    'TeachingLicensesController@edit')->name('teaching_license.edit');
+Route::patch('/teaching_license/update/{teachingLicense}/{fieldsOtherValue?}',
+    'TeachingLicensesController@update')->name('teaching_license.update');
 
+//advertising_license
 Route::get('/advertising_license/create','AdvertisingLicensesController@create')->name('advertising_license.create');
 Route::post('/advertising_license/store','AdvertisingLicensesController@store')->name('advertising_license.store');
-Route::get('/advertising_license/delete/{advertisingLicense}','AdvertisingLicensesController@destroy')->name('advertising_license.delete');
-Route::get('/advertising_license/edit/{advertisingLicense}','AdvertisingLicensesController@edit')->name('advertising_license.edit');
-Route::patch('/advertising_license/update/{advertisingLicense}','AdvertisingLicensesController@update')->name('advertising_license.update');
+Route::get('/advertising_license/delete/{advertisingLicense}/{fieldsOtherValue?}',
+    'AdvertisingLicensesController@destroy')->name('advertising_license.delete');
+Route::get('/advertising_license/edit/{advertisingLicense}/{fieldsOtherValue?}',
+    'AdvertisingLicensesController@edit')->name('advertising_license.edit');
+Route::patch('/advertising_license/update/{advertisingLicense}/{fieldsOtherValue?}',
+    'AdvertisingLicensesController@update')->name('advertising_license.update');
 
+//scientific_reference
 Route::get('/scientific_reference/create','ScientificReferencesController@create')->name('scientific_reference.create');
 Route::post('/scientific_reference/store','ScientificReferencesController@store')->name('scientific_reference.store');
-Route::get('/scientific_reference/delete/{scientificReference}','ScientificReferencesController@destroy')->name('scientific_reference.delete');
-Route::get('/scientific_reference/edit/{scientificReference}','ScientificReferencesController@edit')->name('scientific_reference.edit');
-Route::patch('/scientific_reference/update/{scientificReference}','ScientificReferencesController@update')->name('scientific_reference.update');
+Route::get('/scientific_reference/delete/{scientificReference}/{fieldsOtherValue?}',
+    'ScientificReferencesController@destroy')->name('scientific_reference.delete');
+Route::get('/scientific_reference/edit/{scientificReference}/{fieldsOtherValue?}',
+    'ScientificReferencesController@edit')->name('scientific_reference.edit');
+Route::patch('/scientific_reference/update/{scientificReference}/{fieldsOtherValue?}',
+    'ScientificReferencesController@update')->name('scientific_reference.update');
 
+//field_other_value
 Route::get('/field_other_value','FieldsOtherValuesController@index')->name('field_other_value');
 Route::get('/field_other_value/detail/{fieldsOtherValue}','FieldsOtherValuesController@show')->name('field_other_value.detail');
 Route::get('/field_other_value/edit/{fieldsOtherValue}','FieldsOtherValuesController@edit')->name('field_other_value.edit');

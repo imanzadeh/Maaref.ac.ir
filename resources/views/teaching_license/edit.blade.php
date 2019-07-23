@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-4">
-                <form method="post" action="{{route('teaching_license.update',[$teachingLicense->id])}}">
+                <form method="post" action="{{route('teaching_license.update',
+                [$teachingLicense->id,$fieldsOtherValue->id])}}">
                     {{csrf_field()}}
                     {{method_field('PATCH')}}
                     <div class="row" id="row1">

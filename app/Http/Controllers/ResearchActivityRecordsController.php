@@ -99,13 +99,13 @@ class ResearchActivityRecordsController extends Controller
      * @param  \App\ResearchActivityRecord  $researchActivityRecord
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResearchActivityRecord $researchActivityRecord)
+    public function edit(ResearchActivityRecord $researchActivityRecord, FieldsOtherValue $fieldsOtherValue)
     {
         $trainingCenterTypes = TrainingCenterType::all();
         $trainingCenters=TrainingCenter::where('training_center_type_id',
             $researchActivityRecord->trainingCenter->training_center_type_id)->get();
         return view('research_activity_record/edit',compact(['researchActivityRecord','trainingCenterTypes',
-            'trainingCenters']));
+            'trainingCenters','fieldsOtherValue']));
     }
 
     /**
@@ -115,10 +115,18 @@ class ResearchActivityRecordsController extends Controller
      * @param  \App\ResearchActivityRecord  $researchActivityRecord
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResearchActivityRecord $researchActivityRecord)
+    public function update(Request $request, ResearchActivityRecord $researchActivityRecord,
+                           FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(ResearchActivityRecord::role());
         $researchActivityRecord->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

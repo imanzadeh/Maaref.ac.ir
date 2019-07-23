@@ -161,7 +161,7 @@ class CollegeEducationHistoriesController extends Controller
      * @param  \App\CollegeEducationHistory  $collegeEducationHistory
      * @return \Illuminate\Http\Response
      */
-    public function edit(CollegeEducationHistory $collegeEducationHistory)
+    public function edit(CollegeEducationHistory $collegeEducationHistory, FieldsOtherValue $fieldsOtherValue)
     {
         $grades=Grade::all();
         $fieldOfStudies=FieldOfStudy::all();
@@ -170,7 +170,7 @@ class CollegeEducationHistoriesController extends Controller
         $countries=Country::all();
         //dd($trainingCenters);
         return view('college_education_history/edit', compact(['collegeEducationHistory','grades',
-            'fieldOfStudies','orientations','trainingCenters','countries']));
+            'fieldOfStudies','orientations','trainingCenters','countries','fieldsOtherValue']));
     }
 
     /**
@@ -180,11 +180,18 @@ class CollegeEducationHistoriesController extends Controller
      * @param  \App\CollegeEducationHistory  $collegeEducationHistory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CollegeEducationHistory $collegeEducationHistory)
+    public function update(Request $request, CollegeEducationHistory $collegeEducationHistory,
+                           FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(CollegeEducationHistory::role());
-
         $collegeEducationHistory->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

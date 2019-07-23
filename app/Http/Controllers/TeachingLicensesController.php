@@ -96,10 +96,10 @@ class TeachingLicensesController extends Controller
      * @param  \App\TeachingLicense  $teachingLicense
      * @return \Illuminate\Http\Response
      */
-    public function edit(TeachingLicense $teachingLicense)
+    public function edit(TeachingLicense $teachingLicense, FieldsOtherValue $fieldsOtherValue)
     {
         $lessons=Lesson::all();
-        return view('teaching_license.edit',compact(['teachingLicense','lessons']));
+        return view('teaching_license.edit',compact(['teachingLicense','lessons','fieldsOtherValue']));
     }
 
     /**
@@ -109,10 +109,17 @@ class TeachingLicensesController extends Controller
      * @param  \App\TeachingLicense  $teachingLicense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TeachingLicense $teachingLicense)
+    public function update(Request $request, TeachingLicense $teachingLicense, FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(TeachingLicense::role());
         $teachingLicense->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

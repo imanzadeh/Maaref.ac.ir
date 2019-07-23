@@ -110,7 +110,17 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label"><strong>تاریخ پایان خدمت</strong></label>
-                            <input type="date" name="conscription_end_date" id="conscription_end_date" class="form-control"/>
+                            <input type="text" name="conscription_end_text" id="conscription_end_text"
+                                   class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                   aria-label="date1" aria-describedby="date1" autocomplete="off">
+                            <input type="hidden" id="conscription_end_date" name="conscription_end_date"
+                                   class="form-control" placeholder="Persian Calendar Date"
+                                   aria-label="date11" aria-describedby="date11" autocomplete="off">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text cursor-pointer DatePicker-icon" id="date1">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group col-md-12">
@@ -136,6 +146,14 @@
 
     <script>
         $(document).ready(function() {
+
+            $('#date1').MdPersianDateTimePicker({
+                targetTextSelector: '#conscription_end_text',
+                targetDateSelector: '#conscription_end-date',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
 
             $("#province_id").change(function () {
 

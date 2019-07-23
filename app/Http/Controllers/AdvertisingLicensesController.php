@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AdvertisingLicense;
+use App\FieldsOtherValue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -76,9 +77,10 @@ class AdvertisingLicensesController extends Controller
      * @param \App\AdvertisingLicense $advertisingLicense
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdvertisingLicense $advertisingLicense)
+    public function edit(AdvertisingLicense $advertisingLicense,
+                         FieldsOtherValue $fieldsOtherValue)
     {
-        return view('advertising_license.edit',compact('advertisingLicense'));
+        return view('advertising_license.edit',compact(['advertisingLicense','fieldsOtherValue']));
     }
 
     /**
@@ -88,10 +90,18 @@ class AdvertisingLicensesController extends Controller
      * @param \App\AdvertisingLicense $advertisingLicense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdvertisingLicense $advertisingLicense)
+    public function update(Request $request, AdvertisingLicense $advertisingLicense,
+                           FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(AdvertisingLicense::role());
         $advertisingLicense->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

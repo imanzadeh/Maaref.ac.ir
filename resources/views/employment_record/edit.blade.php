@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form method="post" action="{{route('employment_record.update',[$employmentRecord->id])}}">
+                <form method="post" action="{{route('employment_record.update',
+                [$employmentRecord->id,$fieldsOtherValue->id])}}">
                     {{csrf_field()}}
                     {{method_field('PATCH')}}
                     <div class="row" id="row1">

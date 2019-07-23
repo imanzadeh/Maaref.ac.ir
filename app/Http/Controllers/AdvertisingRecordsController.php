@@ -112,7 +112,7 @@ class AdvertisingRecordsController extends Controller
      * @param  \App\AdvertisingRecord  $advertisingRecord
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdvertisingRecord $advertisingRecord)
+    public function edit(AdvertisingRecord $advertisingRecord, FieldsOtherValue $fieldsOtherValue)
     {
 
         $trainingCenterTypes = TrainingCenterType::all();
@@ -121,7 +121,7 @@ class AdvertisingRecordsController extends Controller
         $advertisingRecordPlaces = AdvertisingRecordPlace::all();
         //return $advertisingRecordPlaces;
         return view('advertising_record.edit',compact(['advertisingRecord','trainingCenterTypes',
-            'advertisingRecordPlaces','trainingCenters']));
+            'advertisingRecordPlaces','trainingCenters','fieldsOtherValue']));
     }
 
     /**
@@ -131,10 +131,17 @@ class AdvertisingRecordsController extends Controller
      * @param  \App\AdvertisingRecord  $advertisingRecord
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdvertisingRecord $advertisingRecord)
+    public function update(Request $request, AdvertisingRecord $advertisingRecord, FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(AdvertisingRecord::role());
         $advertisingRecord->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

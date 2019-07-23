@@ -125,13 +125,13 @@ class EmploymentRecordsController extends Controller
      * @param  \App\EmploymentRecord  $employmentRecord
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmploymentRecord $employmentRecord)
+    public function edit(EmploymentRecord $employmentRecord, FieldsOtherValue $fieldsOtherValue)
     {
         $provinces=Province::all();
         $cities=City::where('province_id',$employmentRecord->city->province_id)->get();
         $responsibilityTypes=ResponsibilityType::all();
         return view('employment_record.edit',compact(['employmentRecord','provinces','cities',
-            'responsibilityTypes']));
+            'responsibilityTypes','fieldsOtherValue']));
     }
 
     /**
@@ -141,10 +141,17 @@ class EmploymentRecordsController extends Controller
      * @param  \App\EmploymentRecord  $employmentRecord
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmploymentRecord $employmentRecord)
+    public function update(Request $request, EmploymentRecord $employmentRecord, FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(EmploymentRecord::role());
         $employmentRecord->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

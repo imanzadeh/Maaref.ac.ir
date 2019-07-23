@@ -379,6 +379,7 @@ body {
 
 .sidebar-wrapper .sidebar-header .user-pic {
     width: 70px;
+    height: 70px;
     margin-left: 15px;
     overflow: hidden;
     float: right;
@@ -816,17 +817,7 @@ body {
 *, *::after, *::before {
     box-sizing: border-box;
 }
-/*label {
-    color: #96c03d;
-    text-decoration: none;
-}*/
-/*
-section {
-    !* used just to separate different styles *!
-    border-bottom: 1px solid #e6e6e6;
-    padding: 4em 0 !important;
-}
-*/
+
 @media only screen and (max-width: 768px) {
     .section-padding{
         display: none;
@@ -846,6 +837,7 @@ section {
 .section-padding{
     border-bottom: 1px solid #e6e6e6;
     padding: 0 !important;
+    margin-bottom: 28px;
 }
 /* --------------------------------
 

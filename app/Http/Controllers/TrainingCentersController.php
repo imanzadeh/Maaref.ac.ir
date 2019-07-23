@@ -54,8 +54,8 @@ class TrainingCentersController extends Controller
     public function update(Request $request, TrainingCenter $trainingCenter)
     {
         $request->validate(TrainingCenter::role());
-
         $trainingCenter->update($request->all());
+
         return redirect(route('training_center'));
     }
 

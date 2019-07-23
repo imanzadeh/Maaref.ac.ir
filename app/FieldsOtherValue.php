@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed table_name
+ * @property mixed record_id
+ * @property mixed id
+ * @property bool applied
  */
 class FieldsOtherValue extends Model
 {

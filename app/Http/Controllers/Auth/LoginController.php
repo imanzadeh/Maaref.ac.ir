@@ -54,7 +54,7 @@ class LoginController extends Controller
 
                 $user->code = $key;
 
-                $api = new SoapClient('http://www.tsms.ir/soapWSDL/?wsdl');
+               /* $api = new SoapClient('http://www.tsms.ir/soapWSDL/?wsdl');
 
                 $username = 'maaref_ac';
                 $password = '12345678';
@@ -64,7 +64,7 @@ class LoginController extends Controller
                 $messagid = rand();
                 $mclass = array('');
 
-                $rezult = $api->sendSms($username, $password, $sms_number_array, $mobile_array, $msg_array, $mclass, $messagid);
+                $rezult = $api->sendSms($username, $password, $sms_number_array, $mobile_array, $msg_array, $mclass, $messagid);*/
 
 
                 if ($user->save()) {

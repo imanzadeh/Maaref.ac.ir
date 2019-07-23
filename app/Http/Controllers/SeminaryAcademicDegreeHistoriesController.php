@@ -123,13 +123,14 @@ class SeminaryAcademicDegreeHistoriesController extends Controller
      * @param  \App\SeminaryAcademicDegreeHistory  $seminaryAcademicDegreeHistory
      * @return \Illuminate\Http\Response
      */
-    public function edit(SeminaryAcademicDegreeHistory $seminaryAcademicDegreeHistory)
+    public function edit(SeminaryAcademicDegreeHistory $seminaryAcademicDegreeHistory,
+                         FieldsOtherValue $fieldsOtherValue)
     {
         $trainingCenters=TrainingCenter::where('training_center_type_id',3)->get();
         $seminaryFieldOfStudies=SeminaryFieldOfStudy::all();
         //dd($seminaryFieldOfStudies);
         return view('seminary_academic_degree_history/edit', compact(['seminaryAcademicDegreeHistory',
-            'trainingCenters','seminaryFieldOfStudies']));
+            'trainingCenters','seminaryFieldOfStudies','fieldsOtherValue']));
     }
 
     /**
@@ -139,12 +140,18 @@ class SeminaryAcademicDegreeHistoriesController extends Controller
      * @param  \App\SeminaryAcademicDegreeHistory  $seminaryAcademicDegreeHistory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SeminaryAcademicDegreeHistory $seminaryAcademicDegreeHistory)
+    public function update(Request $request, SeminaryAcademicDegreeHistory $seminaryAcademicDegreeHistory,
+                           FieldsOtherValue $fieldsOtherValue)
     {
-        //return $seminaryAcademicDegreeHistory;
         $request->validate(SeminaryAcademicDegreeHistory::role());
-
         $seminaryAcademicDegreeHistory->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }

@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-4">
-                <form method="post" action="{{route('seminary_academic_degree_history.update',[$seminaryAcademicDegreeHistory->id])}}">
+                <form method="post" action="{{route('seminary_academic_degree_history.update',
+                [$seminaryAcademicDegreeHistory->id,$fieldsOtherValue->id])}}">
                     {{csrf_field()}}
                     {{method_field('PATCH')}}
                     <div class="row">
@@ -55,13 +56,37 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label"><strong>تاریخ شروع</strong></label>
-                        <input type="date" name="start_date" id="start_date" class="form-control"
-                               value="{{$seminaryAcademicDegreeHistory->start_date}}"/>
+                        <input type="text" name="start_text" id="start_text"
+                               class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                               aria-label="date1" aria-describedby="date1" autocomplete="off"
+                               value="{{$seminaryAcademicDegreeHistory->start_date}}">
+                        <input type="hidden" id="start_date" name="start_date"
+                               class="form-control" placeholder="Persian Calendar Date"
+                               aria-label="date11" aria-describedby="date11" autocomplete="off"
+                               value="{{$seminaryAcademicDegreeHistory->start_date}}">
+                        <div class="input-group-prepend">
+                                    <span class="input-group-text cursor-pointer DatePicker-icon" id="date1">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                        </div>
+
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label"><strong>تاریخ پایان</strong></label>
-                        <input type="date" name="end_date" id="end_date" class="form-control"
-                               value="{{$seminaryAcademicDegreeHistory->end_date}}"/>
+                        <input type="text" name="end_text" id="end_text"
+                               class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                               aria-label="date2" aria-describedby="date2" autocomplete="off"
+                               value="{{$seminaryAcademicDegreeHistory->end_date}}">
+                        <input type="hidden" id="end_date" name="end_date"
+                               class="form-control" placeholder="Persian Calendar Date"
+                               aria-label="date12" aria-describedby="date12" autocomplete="off"
+                               value="{{$seminaryAcademicDegreeHistory->end_date}}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text cursor-pointer DatePicker-icon" id="date2">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label"><strong>مدرک رسمی</strong></label>
@@ -93,6 +118,23 @@
     </div>
     <script>
         $(document).ready(function() {
+
+            $('#date1').MdPersianDateTimePicker({
+                targetTextSelector: '#start-text',
+                targetDateSelector: '#start-date',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
+
+            $('#date2').MdPersianDateTimePicker({
+                targetTextSelector: '#end-text',
+                targetDateSelector: '#end-date',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
+
             $(document).on('change', '#seminary_field_of_study_id', function () {
                 if ($(this).val()/*find("option:selected").text() === "سایر"*/==='other') {
                     $('#seminary_field_of_study_title').prop("type", "text");

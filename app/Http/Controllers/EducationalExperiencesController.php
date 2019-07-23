@@ -113,14 +113,14 @@ class EducationalExperiencesController extends Controller
      * @param  \App\EducationalExperience  $educationalExperience
      * @return \Illuminate\Http\Response
      */
-    public function edit(EducationalExperience $educationalExperience)
+    public function edit(EducationalExperience $educationalExperience, FieldsOtherValue $fieldsOtherValue)
     {
         $trainingCenterTypes = TrainingCenterType::all();
         $trainingCenters=TrainingCenter::where('training_center_type_id',
             $educationalExperience->trainingCenter->training_center_type_id)->get();
         $grades = Grade::all();
         return view('educational_experience/edit',compact(['educationalExperience','trainingCenterTypes',
-            'trainingCenters','grades']));
+            'trainingCenters','grades','fieldsOtherValue']));
     }
 
     /**
@@ -130,10 +130,18 @@ class EducationalExperiencesController extends Controller
      * @param  \App\EducationalExperience  $educationalExperience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EducationalExperience $educationalExperience)
+    public function update(Request $request, EducationalExperience $educationalExperience,
+                           FieldsOtherValue $fieldsOtherValue)
     {
         $request->validate(EducationalExperience::role());
         $educationalExperience->update($request->all());
+
+        if ($fieldsOtherValue->exists==true)
+        {
+            $fieldsOtherValue->applied=true;
+            $fieldsOtherValue->save();
+            return redirect('field_other_value');
+        }
 
         return redirect('alumni/index');
     }
