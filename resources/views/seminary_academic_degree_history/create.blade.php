@@ -139,16 +139,16 @@
         $(document).ready(function() {
 
             $('#date1').MdPersianDateTimePicker({
-                targetTextSelector: '#start-text',
-                targetDateSelector: '#start-date',
+                targetTextSelector: '#start_text',
+                targetDateSelector: '#start_date',
                 enableTimePicker: false,
                 dateFormat: 'yyyy-MM-dd',
                 textFormat: 'yyyy-MM-dd ',
             });
 
             $('#date2').MdPersianDateTimePicker({
-                targetTextSelector: '#end-text',
-                targetDateSelector: '#end-date',
+                targetTextSelector: '#end_text',
+                targetDateSelector: '#end_date',
                 enableTimePicker: false,
                 dateFormat: 'yyyy-MM-dd',
                 textFormat: 'yyyy-MM-dd ',

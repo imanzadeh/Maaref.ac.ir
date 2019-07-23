@@ -106,14 +106,14 @@
 
                                 <div class="form-group col-md-3">
                                     <label class="control-label text-center label-height "><strong>تاریخ شروع</strong></label>
-                                    <input type="text" name="start_text[]" id="start_text"
+                                    <input type="text" name="start_text[]" id="start_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date1" aria-describedby="date1" autocomplete="off">
-                                    <input type="hidden" name="start_date[]" id="start_date"
+                                    <input type="hidden" name="start_date[]" id="start_date1"
                                            class="form-control" placeholder="Persian Calendar Date"
                                            aria-label="date11" aria-describedby="date11" autocomplete="off">
                                     <div class="input-group-prepend">
-                                            <span class="input-group-text cursor-pointer DatePicker-icon" id="date1">
+                                            <span class="input-group-text cursor-pointer DatePicker-icon sdate" id="sdate1" data-id="1">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
                                     </div>
@@ -122,14 +122,14 @@
 
                                 <div class="form-group col-md-3">
                                     <label class="control-label text-center label-height"><strong>تاریخ پایان</strong></label>
-                                    <input type="text" name="end_text[]" id="end_text"
+                                    <input type="text" name="end_text[]" id="end_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date2" aria-describedby="date2" autocomplete="off">
-                                    <input type="hidden" id="end_date" name="end_date[]"
+                                    <input type="hidden" name="end_date[]" id="end_date1"
                                            class="form-control" placeholder="Persian Calendar Date"
                                            aria-label="date12" aria-describedby="date12" autocomplete="off">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text cursor-pointer DatePicker-icon" id="date2">
+                                        <span class="input-group-text cursor-pointer DatePicker-icon edate" id="edate1">
                                             <i class="fas fa-calendar-alt"></i>
                                         </span>
                                     </div>
@@ -166,21 +166,28 @@
 
         $(document).ready(function() {
 
-            $('#date1').MdPersianDateTimePicker({
-                targetTextSelector: '#start-text',
-                targetDateSelector: '#start-date',
-                enableTimePicker: false,
-                dateFormat: 'yyyy-MM-dd',
-                textFormat: 'yyyy-MM-dd ',
+            $(document).on('click', '.sdate', function(){
+                var id = $(this).data('id');
+                //alert(id);
+
+                $('#sdate'+id).MdPersianDateTimePicker({
+                    targetTextSelector: '#start_text'+id,
+                    targetDateSelector: '#start_date'+id,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd ',
+                });
+
+                $('#edate'+id).MdPersianDateTimePicker({
+                    targetTextSelector: '#end_text'+id,
+                    targetDateSelector: '#end_date'+id,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd ',
+                });
             });
 
-            $('#date2').MdPersianDateTimePicker({
-                targetTextSelector: '#end-text',
-                targetDateSelector: '#end-date',
-                enableTimePicker: false,
-                dateFormat: 'yyyy-MM-dd',
-                textFormat: 'yyyy-MM-dd ',
-            });
+
 
             $("#new_row").click(function () {
                 var val=$("#row_count").val();
@@ -206,6 +213,10 @@
                 $("#row"+val+" #field_of_study_title1").attr('id',"field_of_study_title"+val);
                 $("#row"+val+" #training_center_title1").attr('id',"training_center_title"+val);
                 $("#row"+val+" #country_title1").attr('id',"country_title"+val);
+
+                $("#row"+val+" #start_text1").attr('id',"start_text"+val);
+                $("#row"+val+" #start_date1").attr('id',"start_date"+val);
+                $("#row"+val+" #sdate1").attr('id',"sdate"+val);
 
                 $("#row"+val+" #orientation_title" + val).prop("type", "hidden");
                 $("#row"+val+" #field_of_study_title" + val).prop("type", "hidden");
