@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <h4 class="section-header">سوابق تحصیلات حوزوی</h4>
     <section class="section-padding">
         <nav>
@@ -79,7 +80,7 @@
                                     <div class="form-group col-md-2">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ شروع</strong></label>
                                         <input type="text" name="start_text[]" id="start_text{{$seminaryAcademicDegree->id}}"
-                                               class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                               class="form-control DatePicker-input DatePicker-input-with" placeholder="انتخاب تاریخ"
                                                aria-label="date1" aria-describedby="date1" autocomplete="off">
                                         <input type="hidden" name="start_date[]" id="start_date{{$seminaryAcademicDegree->id}}"
                                                class="form-control" placeholder="Persian Calendar Date"
@@ -95,7 +96,7 @@
                                     <div class="form-group col-md-2">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ پایان</strong></label>
                                         <input type="text" name="end_text[]" id="end_text{{$seminaryAcademicDegree->id}}"
-                                               class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                               class="form-control DatePicker-input DatePicker-input-with" placeholder="انتخاب تاریخ"
                                                aria-label="date2" aria-describedby="date2" autocomplete="off">
                                         <input type="hidden" id="end_date{{$seminaryAcademicDegree->id}}" name="end_date[]"
                                                class="form-control" placeholder="Persian Calendar Date"
