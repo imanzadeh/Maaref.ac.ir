@@ -32,9 +32,9 @@
                         </div>
 
                         <div id="rows">
-                            <div class="row" id="row1">
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height "><strong>نوع مرکز پژوهشی</strong></label>
+                            <div class="row border margin-bottom-20 background-div" id="row1">
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>نوع مرکز پژوهشی</strong></label>
                                     <select name="training_center_type_id[]" id="training_center_type_id1"
                                             class="form-control training_center_type" data-id="1">
                                         <option value="">لطفا نوع مرکز پژوهشی را انتخاب کنید</option>
@@ -43,8 +43,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>نام مرکز پژوهشی</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>نام مرکز پژوهشی</strong></label>
                                     <select name="training_center_id[]" id="training_center_id1" class="form-control training_center" data-id="1">
                                         <option value="">لطفا نام مرکز پژوهشی را انتخاب کنید</option>
                                         {{--@foreach( $trainingCenters as $trainingCenter)
@@ -56,24 +56,47 @@
                                     <input type="hidden" name="training_center_title[]" id="training_center_title1"
                                            class="form-control other-input-top"/>
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>عنوان پروهش هایی که نموده یا می نمایید</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>عنوان پروهش هایی که نموده یا می نمایید</strong></label>
                                     <input name="researches_title[]" id="researches_title" class="form-control"/>
                                 </div>
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height "><strong>تاریخ شروع</strong></label>
-                                    <input type="date" name="start_date[]" id="start_date" class="form-control"/>
-                                </div>
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height "><strong>تاریخ پایان</strong></label>
-                                    <input type="date" name="end_date[]" id="end_date" class="form-control"/>
-                                </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label text-center label-height "><strong>نشانی موسسه</strong></label>
+                                    <label class="control-label{{-- text-center label-height--}} "><strong>تاریخ شروع</strong></label>
+                                    <input type="text" name="start_text[]" id="start_text1"
+                                           class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                           aria-label="date1" aria-describedby="date1" autocomplete="off">
+                                    <input type="hidden" name="start_date[]" id="start_date1"
+                                           class="form-control" placeholder="Persian Calendar Date"
+                                           aria-label="date11" aria-describedby="date11" autocomplete="off">
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text cursor-pointer DatePicker-icon sdate" id="sdate1" data-id="1">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </span>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label class="control-label{{-- text-center label-height--}}"><strong>تاریخ پایان</strong></label>
+                                    <input type="text" name="end_text[]" id="end_text1"
+                                           class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                           aria-label="date2" aria-describedby="date2" autocomplete="off">
+                                    <input type="hidden" name="end_date[]" id="end_date1"
+                                           class="form-control" placeholder="Persian Calendar Date"
+                                           aria-label="date12" aria-describedby="date12" autocomplete="off">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text cursor-pointer DatePicker-icon edate" id="edate1">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>نشانی موسسه</strong></label>
                                     <input name="address[]" id="address" class="form-control"/>
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>تلفن</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>تلفن</strong></label>
                                     <input name="phone[]" id="phone" class="form-control"/>
                                 </div>
                             </div>
@@ -106,6 +129,22 @@
 
         $(document).ready(function() {
 
+            $('#sdate1').MdPersianDateTimePicker({
+                targetTextSelector: '#start_text1',
+                targetDateSelector: '#start_date1',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
+            $('#edate1').MdPersianDateTimePicker({
+                targetTextSelector: '#end_text1',
+                targetDateSelector: '#end_date1',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
+
+
             $("#new_row").click(function () {
                 var val=$("#row_count").val();
                 val++;
@@ -122,6 +161,40 @@
                 $("#row"+val+" .training_center").attr('data-id',val);
 
                 $("#row"+val+" #training_center_title" + val).prop("type", "hidden");
+
+                $("#row"+val+" #start_text1").attr('id',"start_text"+val);
+                $("#row"+val+" #start_date1").attr('id',"start_date"+val);
+                $("#row"+val+" #sdate1").attr('id',"sdate"+val);
+                $("#row"+val+" #sdate"+val).attr('data-id',val);
+
+                $("#row"+val+" #end_text1").attr('id',"end_text"+val);
+                $("#row"+val+" #end_date1").attr('id',"end_date"+val);
+                $("#row"+val+" #edate1").attr('id',"edate"+val);
+                $("#row"+val+" #edate"+val).attr('data-id',val);
+
+                $('#sdate'+val).MdPersianDateTimePicker({
+                    targetTextSelector: '#start_text'+val,
+                    targetDateSelector: '#start_date'+val,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd ',
+                });
+
+                $('#edate'+val).MdPersianDateTimePicker({
+                    targetTextSelector: '#end_text'+val,
+                    targetDateSelector: '#end_date'+val,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd ',
+                });
+
+                $("#row"+val+" #researches_title" ).val("");
+                $("#row"+val+" #address" ).val("");
+                $("#row"+val+" #phone" ).val("");
+                $("#row"+val+" #start_text"+val ).val("");
+                $("#row"+val+" #start_date"+val ).val("");
+                $("#row"+val+" #end_text"+val ).val("");
+                $("#row"+val+" #end_date"+val ).val("");
 
                 $("#row_count").val(val);
             });

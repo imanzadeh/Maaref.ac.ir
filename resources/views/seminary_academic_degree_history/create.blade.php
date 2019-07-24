@@ -75,16 +75,17 @@
 
                                         <input name="training_center_title[]" id="training_center_title{{$seminaryAcademicDegree->id}}" class="form-control other-input-top display-none"/>
                                     </div>
-                                    <div class="form-group col-md-2">
+
+                                    <div class="form-group col-md-3">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ شروع</strong></label>
-                                        <input type="text" name="start_text[]" id="start_text"
+                                        <input type="text" name="start_text[]" id="start_text{{$seminaryAcademicDegree->id}}"
                                                class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                                aria-label="date1" aria-describedby="date1" autocomplete="off">
-                                        <input type="hidden" name="start_date[]" id="start_date"
+                                        <input type="hidden" name="start_date[]" id="start_date{{$seminaryAcademicDegree->id}}"
                                                class="form-control" placeholder="Persian Calendar Date"
                                                aria-label="date11" aria-describedby="date11" autocomplete="off">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text cursor-pointer DatePicker-icon" id="date1">
+                                            <span class="input-group-text cursor-pointer DatePicker-icon" id="sdate{{$seminaryAcademicDegree->id}}">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
                                         </div>
@@ -92,16 +93,16 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ پایان</strong></label>
-                                        <input type="text" name="end_text[]" id="end_text"
+                                        <input type="text" name="end_text[]" id="end_text{{$seminaryAcademicDegree->id}}"
                                                class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                                aria-label="date2" aria-describedby="date2" autocomplete="off">
-                                        <input type="hidden" id="end_date" name="end_date[]"
+                                        <input type="hidden" id="end_date{{$seminaryAcademicDegree->id}}" name="end_date[]"
                                                class="form-control" placeholder="Persian Calendar Date"
                                                aria-label="date12" aria-describedby="date12" autocomplete="off">
                                         <div class="input-group-prepend">
-                            <span class="input-group-text cursor-pointer DatePicker-icon" id="date2">
-                                <i class="fas fa-calendar-alt"></i>
-                            </span>
+                                            <span class="input-group-text cursor-pointer DatePicker-icon" id="edate{{$seminaryAcademicDegree->id}}">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-1">
@@ -111,6 +112,24 @@
                                     </div>
 
                                 </div>
+                                <script>
+                                    //alert($('#start_text{{$seminaryAcademicDegree->id}}').val());
+                                    $('#sdate'+'{{$seminaryAcademicDegree->id}}').MdPersianDateTimePicker({
+                                        targetTextSelector: '#start_text{{$seminaryAcademicDegree->id}}',
+                                        targetDateSelector: '#start_date{{$seminaryAcademicDegree->id}}',
+                                        enableTimePicker: false,
+                                        dateFormat: 'yyyy-MM-dd',
+                                        textFormat: 'yyyy-MM-dd ',
+                                    });
+
+                                    $('#edate{{$seminaryAcademicDegree->id}}').MdPersianDateTimePicker({
+                                        targetTextSelector: '#end_text{{$seminaryAcademicDegree->id}}',
+                                        targetDateSelector: '#end_date{{$seminaryAcademicDegree->id}}',
+                                        enableTimePicker: false,
+                                        dateFormat: 'yyyy-MM-dd',
+                                        textFormat: 'yyyy-MM-dd ',
+                                    });
+                                </script>
                             @endforeach
 
                         </div>
@@ -138,21 +157,7 @@
     <script>
         $(document).ready(function() {
 
-            $('#date1').MdPersianDateTimePicker({
-                targetTextSelector: '#start_text',
-                targetDateSelector: '#start_date',
-                enableTimePicker: false,
-                dateFormat: 'yyyy-MM-dd',
-                textFormat: 'yyyy-MM-dd ',
-            });
 
-            $('#date2').MdPersianDateTimePicker({
-                targetTextSelector: '#end_text',
-                targetDateSelector: '#end_date',
-                enableTimePicker: false,
-                dateFormat: 'yyyy-MM-dd',
-                textFormat: 'yyyy-MM-dd ',
-            });
 
             $(document).on('change', '.official_document', function () {
                 var id = $(this).data('id');
