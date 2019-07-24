@@ -76,7 +76,7 @@
                                         <input name="training_center_title[]" id="training_center_title{{$seminaryAcademicDegree->id}}" class="form-control other-input-top display-none"/>
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ شروع</strong></label>
                                         <input type="text" name="start_text[]" id="start_text{{$seminaryAcademicDegree->id}}"
                                                class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
@@ -85,7 +85,8 @@
                                                class="form-control" placeholder="Persian Calendar Date"
                                                aria-label="date11" aria-describedby="date11" autocomplete="off">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text cursor-pointer DatePicker-icon" id="sdate{{$seminaryAcademicDegree->id}}">
+                                            <span class="input-group-text cursor-pointer DatePicker-icon sdate"
+                                                  id="sdate{{$seminaryAcademicDegree->id}}" data-id="{{$seminaryAcademicDegree->id}}">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
                                         </div>
@@ -100,7 +101,8 @@
                                                class="form-control" placeholder="Persian Calendar Date"
                                                aria-label="date12" aria-describedby="date12" autocomplete="off">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text cursor-pointer DatePicker-icon" id="edate{{$seminaryAcademicDegree->id}}">
+                                            <span class="input-group-text cursor-pointer DatePicker-icon edate"
+                                                  id="edate{{$seminaryAcademicDegree->id}}" data-id="{{$seminaryAcademicDegree->id}}">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
                                         </div>
@@ -112,24 +114,7 @@
                                     </div>
 
                                 </div>
-                                <script>
-                                    //alert($('#start_text{{$seminaryAcademicDegree->id}}').val());
-                                    $('#sdate'+'{{$seminaryAcademicDegree->id}}').MdPersianDateTimePicker({
-                                        targetTextSelector: '#start_text{{$seminaryAcademicDegree->id}}',
-                                        targetDateSelector: '#start_date{{$seminaryAcademicDegree->id}}',
-                                        enableTimePicker: false,
-                                        dateFormat: 'yyyy-MM-dd',
-                                        textFormat: 'yyyy-MM-dd ',
-                                    });
 
-                                    $('#edate{{$seminaryAcademicDegree->id}}').MdPersianDateTimePicker({
-                                        targetTextSelector: '#end_text{{$seminaryAcademicDegree->id}}',
-                                        targetDateSelector: '#end_date{{$seminaryAcademicDegree->id}}',
-                                        enableTimePicker: false,
-                                        dateFormat: 'yyyy-MM-dd',
-                                        textFormat: 'yyyy-MM-dd ',
-                                    });
-                                </script>
                             @endforeach
 
                         </div>
@@ -217,6 +202,32 @@
                     return false;
                 }
             });
+
+
+
+            $( ".sdate" ).each(function( i ) {
+                var id = $(this).data('id');
+                //alert(id);
+                $('#sdate'+id).MdPersianDateTimePicker({
+                    targetTextSelector: '#start_text'+id,
+                    targetDateSelector: '#start_date'+id,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd',
+                });
+            });
+            $( ".edate" ).each(function( i ) {
+                var id = $(this).data('id');
+                //alert(i);
+                $('#edate'+id).MdPersianDateTimePicker({
+                    targetTextSelector: '#end_text'+id,
+                    targetDateSelector: '#end_date'+id,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd',
+                });
+            });
+
         });
     </script>
 @endsection
