@@ -12,6 +12,7 @@ public/hot
 storage/*.key
 .env.*.php
 .env.php
+workspace.xml
 .env
 .idea
 Homestead.yaml

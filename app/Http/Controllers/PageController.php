@@ -18,7 +18,7 @@ class PageController extends Controller
 {
     public function index() {
 
-        return view('Pages.ProfessorServices');
+        return view('Pages.Members');
     }
 
     public function ProfessorsList() {
