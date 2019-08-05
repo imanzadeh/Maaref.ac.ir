@@ -15,7 +15,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', 'PageController@index');
+Route::get('/', 'PageController@index')->name('main_page');
 Route::get('/ProfessorsList', 'PageController@ProfessorsList')->name('ProfessorsList');
 Route::get('/ProfessorResume/{id}', 'PageController@ProfessorResume');
 Route::get('/show_users', 'PageController@show_users');
