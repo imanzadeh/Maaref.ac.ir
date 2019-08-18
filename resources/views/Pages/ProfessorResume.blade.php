@@ -5,32 +5,66 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/bootstrap-rtl.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/fontawesome.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet">
     <title>نمایش رزومه</title>
+    <style>
+        body {margin: 0;padding: 0;background: url('{{ URL::asset('images') }}/bg.jpg') no-repeat;}
+        .navbar-expand-xl {background-color: transparent;}
+        .navbar-dark .navbar-nav .nav-link {color: #0c426f;}
+        .text {
+            text-align: center;
+            font-size: 8pt;
+            color: #7b5d01;
+            line-height: 1.8;
+            font-weight: bold;
+            margin-top: 5px;
+
+        }
+        .logo_title{
+            font-family: IranNastaliq,IRANSans;
+            text-align: center;
+            font-size: 30pt;
+            background: -webkit-linear-gradient(#0c426f, #0c426f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 35px #c4b59d, 0px -1px 1px #0c426f;
+        }
+        .search_div{display: flex;align-items: center;justify-content: center;}
+    </style>
 </head>
 <body>
-    <header id="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="/images/maaref_logo5.png">
-                </div>
-                <div class="col-md-6">
-                    <h2 class="header-title">سامانه یکپارچه اعضاء دانشگاه معارف اسلامی</h2>
-                </div>
-                <div class="col-md-3"></div>
+
+<section style="padding-bottom: 30px;">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-2 logo_div fadein">
+                <img src="{{ URL::asset('images') }}/logo1.png" class="text-focus-in1" width="100" height="100">
+                <p class="text text-focus-in3">
+                    دانشگاه معارف اسلامی
+                    <br>
+                    معاونت پژوهش
+                    <br>
+                    مرکز فناوری اطلاعات و ارتباطات
+                </p>
+
+
+            </div>
+            <div class="col-md-8 search_div fadein" id="menu">
+                <h3 class="logo_title text-focus-in2">سامانه علم سنجی اعضای هیأت علمی</h3>
             </div>
         </div>
-    </header>
+
+    </div>
+</section>
 
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-3 col-5">
-                    <img src="/images/UsersPic/{{$user->pic}}" class="profile-pic">
+                    <img src="{{ URL::asset('images') }}/UsersPic/{{$user->pic}}" class="profile-pic">
                 </div>
                 <div class="col-lg-6 col-md-5 col-7">
                     <label class="form-inline margin-top-20 professor_name bottom_border_yellow"> {{$user->FirstName . " " . $user->LastName }} </label>
@@ -248,7 +282,7 @@
             <p class="copyright">تمام حقوق مادی و معنوی این سایت برای دانشگاه معارف اسلامی محفوظ است</p>
         </div>
     </footer>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>

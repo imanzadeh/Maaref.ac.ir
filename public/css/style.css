@@ -297,7 +297,7 @@ body {
 
 @media screen and (min-width: 768px) {
     .page-wrapper.toggled .page-content {
-        padding-right: 275px;
+        /*padding-right: 275px;*/
     }
 }
 /*----------------show sidebar button----------------*/

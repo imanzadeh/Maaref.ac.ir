@@ -35,7 +35,7 @@
             <i class="fas fa-angle-double-left"></i>
         </a>
 
-        @include('layouts.dashboard_menu')
+        {{--@include('layouts.dashboard_menu')--}}
 
         <!-- sidebar-wrapper  -->
         <main class="page-content">

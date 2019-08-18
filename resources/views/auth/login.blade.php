@@ -1,182 +1,333 @@
-@extends('layouts.login')
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ورود به پنل کاربری</title>
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
 
-@section('content')
-{{--<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    {{--<link rel="stylesheet" href="css/transition/reset.css"> <!-- CSS reset -->--}}
+    <link rel="stylesheet" href="css/transition/style.css"> <!-- Resource style -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
 
-                <div class="card-body">
+    <style>
+        body {margin: 0;padding: 0;background: url('images/bg.jpg') no-repeat;}
+        .navbar-expand-xl {background-color: transparent;}
+        .navbar-dark .navbar-nav .nav-link {color: #0c426f;}
+        .text {
+            text-align: center;
+            font-size: 12pt;
+            color: #7b5d01;
+            line-height: 1.8;
+            font-weight: bold;
+            margin-top: 5px;
 
-                    @if(\Session::has('message'))
-                        <div class="alert alert-success">{{ \Session::get('message') }}</div>
-                    @endif
+        }
+        .logo_title{
+            font-family: IranNastaliq,IRANSans;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size: 28pt;
+            background: -webkit-linear-gradient(#0c426f, #0c426f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 35px #c4b59d, 0px -1px 1px #0c426f;
+        }
+        .height100{height: 85vh;display:flex;align-items:center;}
 
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        .card-body {padding-right: 40px}
+        form label {text-align: right;margin-bottom: 10px}
+        form .remember-label {margin-right: 10px;padding-top: 10px;margin-bottom: 10px}
+        form input, form button {height: 40px;font-size: 10pt !important;}
+        .alert-danger ul {margin-right: -20px;margin-top: 10px;}
+        .alert-danger ul li {font-size: 12px;text-align: right;}
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('نام کاربری') }}</label>
+        .mask-2.cd-intro-content .content-wrapper::before {top: 10%;height: 80%;}
+        /**
+         * ----------------------------------------
+         * animation text-focus-in
+         * ----------------------------------------
+         */
+        @-webkit-keyframes text-focus-in {
+            0% {
+                -webkit-filter: blur(12px);
+                filter: blur(12px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-filter: blur(0px);
+                filter: blur(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes text-focus-in {
+            0% {
+                -webkit-filter: blur(12px);
+                filter: blur(12px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-filter: blur(0px);
+                filter: blur(0px);
+                opacity: 1;
+            }
+        }
 
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+        .text-focus-in1 {
+            -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+            animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        }
+        .text-focus-in2 {
+            -webkit-animation: text-focus-in 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+            animation: text-focus-in 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        }
+        .text-focus-in3 {
+            -webkit-animation: text-focus-in 1.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+            animation: text-focus-in 1.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        }
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        /**
+         * ----------------------------------------
+         * animation slide-in-top
+         * ----------------------------------------
+         */
+        @-webkit-keyframes slide-in-top {
+            0% {
+                -webkit-transform: translateY(-1000px);
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-in-top {
+            0% {
+                -webkit-transform: translateY(-1000px);
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('رمز عبور') }}</label>
+        .slide-in-top {
+            -webkit-animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+        /**
+         * ----------------------------------------
+         * animation slide-in-bottom
+         * ----------------------------------------
+         */
+        @-webkit-keyframes slide-in-bottom {
+            0% {
+                -webkit-transform: translateY(1000px);
+                transform: translateY(1000px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-in-bottom {
+            0% {
+                -webkit-transform: translateY(1000px);
+                transform: translateY(1000px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        .slide-in-bottom {
+            -webkit-animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+    </style>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+</head>
+<body>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="container">
+    <nav class="navbar navbar-expand-xl navbar-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContentXL">
+
+            <ul class="navbar-nav mr-auto slide-in-top">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">راهنما</a>
+                </li>
+            </ul>
+
         </div>
-    </div>
-</div>--}}
+    </nav>
 
-<div class="omni-authorize clearfix">
-    <div class="col-md-6 omni-authorize-form">
-        <div class="omni-form-inner">
-            <div class="logo" align="center">
-                <div class="MaarefLogo"></div>
-                <div style="margin-top:10px;color:#107837;font-size:18px;margin-bottom:30px">
-                    سامانه یکپارچه اعضاء
+    <div class="row height100">
+        <div class="col-lg-8 col-md-12 offset-lg-2 text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ URL::asset('images') }}/logo1.png" class="text-focus-in1" width="150" height="150">
+                    <p class="text text-focus-in3">
+                        دانشگاه معارف اسلامی
+                        <br>
+                        معاونت پژوهش
+                        <br>
+                        مرکز فناوری اطلاعات و ارتباطات
+                    </p>
+                    <h3 class="logo_title text-focus-in2">سامانه جامع و یکپارچه اعضاء</h3>
+
                 </div>
-            </div>
-            <div class="content">
-                <div id="notifier" class="notify-wrap" style="display:none;clear:both;margin-top:0px">
+                <div class="col-md-6" id="menu">
+                    <div class="cd-intro">
+                        <div class="cd-intro-content mask-2">
+                            <div class="content-wrapper">
+                                <div id="notifier" class="notify-wrap" style="display:none;clear:both;margin-top:0px">
 
-                </div>
-                <div>
+                                </div>
+                                <div>
 
-                    <div class="card-body">
+                                    <div class="card-body">
 
-                        @if(\Session::has('message'))
-                            <div class="alert alert-success">{{ \Session::get('message') }}</div>
-                        @endif
+                                        @if(\Session::has('message'))
+                                            <div class="alert alert-success">{{ \Session::get('message') }}</div>
+                                        @endif
 
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div><br />
+                                        @endif
 
-                            <div class="form-group">
+                                        <form method="POST" action="{{ route('login') }}">
+                                            @csrf
 
-                                <input autocomplete="off" caption="نام کاربری" id="username" type="text"
-                                       class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }} input-lg"
-                                       name="username" value="{{ old('username') }}" required autofocus placeholder="نام کاربری">
+                                            <div class="form-group">
+                                                <label class="input-bottom-error" id="txtNameFamily_pm">نام کاربری خود را وارد کنید.</label>
+                                                <input autocomplete="off" caption="نام کاربری" id="username" type="text"
+                                                       class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }} input-lg"
+                                                       name="username" value="{{ old('username') }}" required autofocus placeholder="نام کاربری">
 
-                                <div class="input-bottom-error" id="txtNameFamily_pm">نام کاربری خود را وارد کنید.</div>
+                                                @if ($errors->has('username'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('username') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
 
-                                @if ($errors->has('username'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                                            <div class="form-group">
+                                                <label class="input-bottom-error" id="txtNameFamily_pm">رمز عبور خود را وارد کنید.</label>
 
-                            <div class="form-group">
+                                                <input autocomplete="off" caption="رمز عبور" id="password" type="password"
+                                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} input-lg"
+                                                       name="password" required placeholder="رمز عبور" onFocus="this.select();">
 
-                                <input autocomplete="off" caption="رمز عبور" id="password" type="password"
-                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} input-lg"
-                                       name="password" required placeholder="رمز عبور" onFocus="this.select();">
+                                                @if ($errors->has('password'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
 
-                                <div class="input-bottom-error" id="txtNameFamily_pm">رمز عبور خود را وارد کنید.</div>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                                            <div class="form-group">
+                                                <div class="captcha">
+                                                    <span>{!! captcha_img('flat') !!}</span>
+                                                    <button type="button" class="btn btn-success btn-refresh"
+                                                            id="refresh"><i class="fas fa-sync-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
 
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember"
-                                           id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label remember-label" for="remember">
-                                        {{ __('مرا به خاطر بسپار') }}
-                                    </label>
+                                            <div class="form-group">
+                                                <input id="captcha" type="text" class="form-control" placeholder="عبارت امنیتی" name="captcha">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember"
+                                                           id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                    <label class="form-check-label remember-label" for="remember">
+                                                        {{ __('مرا به خاطر بسپار') }}
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <button type="submit" class="btn btn-primary" style="width: 100%">
+                                                    {{ __('ورود') }}
+                                                </button>
+
+                                                @if (Route::has('password.request'))
+                                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                        {{ __('Forgot Your Password?') }}
+                                                    </a>
+                                                @endif
+
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-
-                                <button type="submit" class="btn btn-primary" style="width: 100%">
-                                    {{ __('ورود') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-
-                            </div>
-                        </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
-        </div>
-        <center>
-            <div style="margin: 20px;margin-top: 30px;max-width:600px" align="center">
-                <div style="text-align:justify;font-size:14px;line-height: 30px;padding: 15px">
-                    <p style="color:#FF0066" align="center"><i class="fa fa-bell"></i>&nbsp;در صورت بروز هرگونه اشکال یا خطا، با شماره تلفن 32110488-025 تماس حاصل فرموده و یا با پست الکترونیک it@maaref.ac.ir مکاتبه نمائید.</p>
-                </div>
-                <div class="copyright" align="center">2019 &copy; مرکز فناوری دانشگاه معارف اسلامی.</div>
-            </div>
-        </center>
-        <div class="omni-footer">
-        </div>
-    </div>
-    <div class="col-md-6 omni-authorize-image">
-        <div class="omni-authorize-copy" style="text-shadow: 5px 2px 5px #000;margin: 50px 110px 110px 110px;text-align: justify;width: unset !important;">
-            <h5>
-                <i class="fa fa-quote-right"></i> بى شك دوست محمد(ص ) كسى است كه خدا را فرمان برد اگر چه خويشاوندى او با آن حضرت دور باشد.
-                <i class="fa fa-quote-left"></i><BR><BR><span style="font-size: 15px !important;">حضرت علي (ع) - همان ، خ 92، ص 1129.</span>
-            </h5>
+
         </div>
     </div>
 </div>
-@endsection
+
+<footer>
+    <div class="container">
+        <p class="copyright">تمام حقوق مادی و معنوی این سایت برای دانشگاه معارف اسلامی محفوظ است</p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+<script type="text/javascript">
+    $('#refresh').click(function(){
+        $.ajax({
+            url: 'refreshCaptcha',
+            type: 'get',
+            dataType: 'html',
+            success: function (json) {
+                $('.captcha span').html(json);
+            },
+            error: function (data) {
+                alert('لطفا دوباره سعی کنید.');
+            }
+        });
+    });
+</script>
+</body>
+</html>
+{{--@endsection--}}

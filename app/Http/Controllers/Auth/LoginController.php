@@ -44,37 +44,54 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-        {
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:6',
+            'captcha' => 'required|captcha'
+        ],
+        [
+            'username.required' => '.نام کاربری را وارد کنید',
+            'password.required' => '.رمز عبور را وارد کنید',
+            'password.min' => '.رمز عبور باید حداقل 6 کارکتر باشد',
+            'captcha.required' => 'لطفا عبارت امنیتی را بدرستی وارد است.',
+            'captcha.captcha' => 'عبارت امنیتی اشتباه است.'
+        ]);
 
-            if (Auth::attempt($request->only(['username', 'password']))) {
+        if (Auth::attempt($request->only(['username', 'password']))) {
 
-                $key = Keygen::numeric(4)->generate();
+            $key = Keygen::numeric(4)->generate();
 
-                $user = $this->guard()->getLastAttempted();
+            $user = $this->guard()->getLastAttempted();
 
-                $user->code = $key;
+            $user->code = $key;
 
-               /* $api = new SoapClient('http://www.tsms.ir/soapWSDL/?wsdl');
+           /* $api = new SoapClient('http://www.tsms.ir/soapWSDL/?wsdl');
 
-                $username = 'maaref_ac';
-                $password = '12345678';
-                $mobile_array = array($user->mobile);//حداکثر 100 شماره موبایل
-                $msg_array = array("کد تایید شما: " . $key);
-                $sms_number_array = array('3000101166');
-                $messagid = rand();
-                $mclass = array('');
+            $username = 'maaref_ac';
+            $password = '12345678';
+            $mobile_array = array($user->mobile);//حداکثر 100 شماره موبایل
+            $msg_array = array("کد تایید شما: " . $key);
+            $sms_number_array = array('3000101166');
+            $messagid = rand();
+            $mclass = array('');
 
-                $rezult = $api->sendSms($username, $password, $sms_number_array, $mobile_array, $msg_array, $mclass, $messagid);*/
+            $rezult = $api->sendSms($username, $password, $sms_number_array, $mobile_array, $msg_array, $mclass, $messagid);*/
 
 
-                if ($user->save()) {
-                    return redirect('/verify');
-                }
+            if ($user->save()) {
+                return redirect('/verify');
             }
-
-            return redirect()->to('login')
-                ->withMessage('اطلاعات ورودی نادرست است لطفا دوباره سعی کنید.');
         }
+
+        return redirect()->to('login')
+            ->withMessage('اطلاعات ورودی نادرست است لطفا دوباره سعی کنید.');
+    }
+
+    public function refreshCaptcha()
+    {
+        return captcha_img('flat');
+    }
 
     public function login2(Request $request)
     {

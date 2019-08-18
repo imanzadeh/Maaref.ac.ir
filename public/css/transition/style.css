@@ -343,7 +343,7 @@ Mask 2
     top: 25%;
     right: 0;
     height: 60%;
-    width: 2px;
+    width: 1px;
     background-color: #d39e00;
 
     -webkit-animation: cd-pulse 1.3s 1.5s both;
@@ -449,35 +449,17 @@ Mask 2
     }
 }
 @-webkit-keyframes cd-pulse {
-    0%, 30.8%, 50%  {
-        opacity: 0;
-    }
-    15.4%, 46.2%, 61.5%, 70% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    100% {opacity: 1;}
 }
 @-moz-keyframes cd-pulse {
-    0%, 30.8%, 50%  {
-        opacity: 0;
-    }
-    15.4%, 46.2%, 61.5%, 70% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    100% {opacity: 1;}
 }
 @keyframes cd-pulse {
-    0%, 30.8%, 50% {
-        opacity: 0;
-    }
-    15.4%, 46.2%, 61.5%, 70% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
+    0%{opacity: 0;}
+    10% {opacity: 1}
+    100% {opacity: 1;}
 }

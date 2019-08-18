@@ -17,6 +17,7 @@ Route::get('/welcome', function () {
 
 Route::get('/', 'PageController@index')->name('main_page');
 Route::get('/ProfessorsList', 'PageController@ProfessorsList')->name('ProfessorsList');
+Route::get('ProfessorsSearch/{group_id}/{LastName}', 'PageController@ProfessorsSearch')->name('ProfessorsSearch');
 Route::get('/ProfessorResume/{id}', 'PageController@ProfessorResume');
 Route::get('/show_users', 'PageController@show_users');
 
@@ -25,6 +26,8 @@ Auth::routes([
     'verify' => false,
     'register' => false,
 ]);
+
+Route::get('refreshCaptcha', 'Auth\LoginController@refreshCaptcha');
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 

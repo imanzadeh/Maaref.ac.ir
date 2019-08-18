@@ -9,14 +9,14 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-rtl.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
 
     {{--<link rel="stylesheet" href="css/transition/reset.css"> <!-- CSS reset -->--}}
     <link rel="stylesheet" href="css/transition/style.css"> <!-- Resource style -->
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
 
     <style>
-        body {margin: 0;padding: 0;background: url('images/bg.jpg') no-repeat;}
+        body {margin: 0;padding: 0;background: url('/images/bg.jpg') no-repeat;}
         .navbar-expand-xl {background-color: transparent;}
         .navbar-dark .navbar-nav .nav-link {color: #0c426f;}
         .text {
@@ -183,137 +183,6 @@
 
     </style>
 
-    <style>
-        @-webkit-keyframes delay {
-            0%, 40%, 100% {
-                transform: scaleY(0.05);
-                -webkit-transform: scaleY(0.05);
-            }
-            20% {
-                transform: scaleY(1);
-                -webkit-transform: scaleY(1);
-            }
-        }
-        @keyframes delay {
-            0%, 40%, 100% {
-                transform: scaleY(0.05);
-                -webkit-transform: scaleY(0.05);
-            }
-            20% {
-                transform: scaleY(1);
-                -webkit-transform: scaleY(1);
-            }
-        }
-        body {
-            /*font-size: 1.6rem;
-            font-family: "Open Sans", sans-serif;*/
-            color: #4089a6;
-            background-color: #ffffff;
-            -webkit-font-smoothing: antialiased;
-            /*&.is-changing{
-              &:before,
-              &:after{
-                transform: translateY(0);
-              }
-            }*/
-        }
-        body:before, body:after {
-            content: '';
-            height: 50vh;
-            width: 100%;
-            position: fixed;
-            left: 0;
-            background: #1c2020;
-            z-index: 1;
-        }
-        body:before {
-            top: 0;
-            -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-        }
-        body:after {
-            bottom: 0;
-            -webkit-transform: translateY(100%);
-            transform: translateY(100%);
-        }
-
-        h1 {
-            color: #1c2020;
-            margin-bottom: 1em;
-            font-size: 2.2rem;
-            font-weight: 100;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1.4em 1.6em;
-            margin-bottom: 2em;
-            border-radius: 50em;
-            background-color: #343b3b;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-        .btn:hover {
-            background-color: #404949;
-        }
-
-        .loader {
-            margin: 0 auto;
-            width: 60px;
-            height: 50px;
-            text-align: center;
-            font-size: 10px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translateY(-50%) translateX(-50%);
-            transform: translateY(-50%) translateX(-50%);
-            z-index: 500;
-            opacity: 0;
-        }
-        .loader > div {
-            height: 100%;
-            width: 8px;
-            display: inline-block;
-            float: left;
-            margin-left: 2px;
-            -webkit-animation: delay 0.8s infinite ease-in-out;
-            animation: delay 0.8s infinite ease-in-out;
-        }
-        .loader .bar1 {
-            background-color: #754fa0;
-        }
-        .loader .bar2 {
-            background-color: #09b7bf;
-            -webkit-animation-delay: -0.7s;
-            animation-delay: -0.7s;
-        }
-        .loader .bar3 {
-            background-color: #90d36b;
-            -webkit-animation-delay: -0.6s;
-            animation-delay: -0.6s;
-        }
-        .loader .bar4 {
-            background-color: #f2d40d;
-            -webkit-animation-delay: -0.5s;
-            animation-delay: -0.5s;
-        }
-        .loader .bar5 {
-            background-color: #fcb12b;
-            -webkit-animation-delay: -0.4s;
-            animation-delay: -0.4s;
-        }
-        .loader .bar6 {
-            background-color: #ed1b72;
-            -webkit-animation-delay: -0.3s;
-            animation-delay: -0.3s;
-        }
-    </style>
-
 </head>
 <body>
 
@@ -378,49 +247,14 @@
     </div>
 </div>
 
-<div class="loader">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-    <div class="bar4"></div>
-    <div class="bar5"></div>
-    <div class="bar6"></div>
-</div>
-
 <footer>
     <div class="container">
         <p class="copyright">تمام حقوق مادی و معنوی این سایت برای دانشگاه معارف اسلامی محفوظ است</p>
     </div>
 </footer>
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/plugins/CSSRulePlugin.min.js'></script>
-
-<script src="js/main.js"></script> <!-- Resource jQuery -->
-
-<script>
-    // play on load for gallery view
-
-    $('.js-trigger-transition').on('click', function(e) {
-        e.preventDefault();
-        transition();
-        var href = $(this).attr('href')
-        window.location= href;
-    });
-
-    function transition() {
-        var tl = new TimelineMax();
-
-        tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')
-            .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '50%' }, ease: Power2.easeOut}, 'close')
-            .to($('.loader'), 0.2, {opacity: 1})
-            .to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '0%' }, ease: Power2.easeOut}, '+=1.5', 'open')
-            .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '0%' }, ease: Power2.easeOut}, '-=0.2', 'open')
-            .to($('.loader'), 0.2, {opacity: 0}, '-=0.2');
-    }
-</script>
+<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 
 </body>
 </html>
