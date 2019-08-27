@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <h4 class="section-header">سوابق تحصیلات حوزوی</h4>
     <section class="section-padding">
         <nav>
@@ -75,33 +76,36 @@
 
                                         <input name="training_center_title[]" id="training_center_title{{$seminaryAcademicDegree->id}}" class="form-control other-input-top display-none"/>
                                     </div>
+
                                     <div class="form-group col-md-2">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ شروع</strong></label>
-                                        <input type="text" name="start_text[]" id="start_text"
-                                               class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                        <input type="text" name="start_text[]" id="start_text{{$seminaryAcademicDegree->id}}"
+                                               class="form-control DatePicker-input DatePicker-input-with" placeholder="انتخاب تاریخ"
                                                aria-label="date1" aria-describedby="date1" autocomplete="off">
-                                        <input type="hidden" name="start_date[]" id="start_date"
+                                        <input type="hidden" name="start_date[]" id="start_date{{$seminaryAcademicDegree->id}}"
                                                class="form-control" placeholder="Persian Calendar Date"
                                                aria-label="date11" aria-describedby="date11" autocomplete="off">
                                         <div class="input-group-prepend">
-                                    <span class="input-group-text cursor-pointer DatePicker-icon" id="date1">
-                                        <i class="fas fa-calendar-alt"></i>
-                                    </span>
+                                            <span class="input-group-text cursor-pointer DatePicker-icon sdate"
+                                                  id="sdate{{$seminaryAcademicDegree->id}}" data-id="{{$seminaryAcademicDegree->id}}">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </span>
                                         </div>
 
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ پایان</strong></label>
-                                        <input type="text" name="end_text[]" id="end_text"
-                                               class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                        <input type="text" name="end_text[]" id="end_text{{$seminaryAcademicDegree->id}}"
+                                               class="form-control DatePicker-input DatePicker-input-with" placeholder="انتخاب تاریخ"
                                                aria-label="date2" aria-describedby="date2" autocomplete="off">
-                                        <input type="hidden" id="end_date" name="end_date[]"
+                                        <input type="hidden" id="end_date{{$seminaryAcademicDegree->id}}" name="end_date[]"
                                                class="form-control" placeholder="Persian Calendar Date"
                                                aria-label="date12" aria-describedby="date12" autocomplete="off">
                                         <div class="input-group-prepend">
-                            <span class="input-group-text cursor-pointer DatePicker-icon" id="date2">
-                                <i class="fas fa-calendar-alt"></i>
-                            </span>
+                                            <span class="input-group-text cursor-pointer DatePicker-icon edate"
+                                                  id="edate{{$seminaryAcademicDegree->id}}" data-id="{{$seminaryAcademicDegree->id}}">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-1">
@@ -111,6 +115,7 @@
                                     </div>
 
                                 </div>
+
                             @endforeach
 
                         </div>
@@ -138,21 +143,7 @@
     <script>
         $(document).ready(function() {
 
-            $('#date1').MdPersianDateTimePicker({
-                targetTextSelector: '#start-text',
-                targetDateSelector: '#start-date',
-                enableTimePicker: false,
-                dateFormat: 'yyyy-MM-dd',
-                textFormat: 'yyyy-MM-dd ',
-            });
 
-            $('#date2').MdPersianDateTimePicker({
-                targetTextSelector: '#end-text',
-                targetDateSelector: '#end-date',
-                enableTimePicker: false,
-                dateFormat: 'yyyy-MM-dd',
-                textFormat: 'yyyy-MM-dd ',
-            });
 
             $(document).on('change', '.official_document', function () {
                 var id = $(this).data('id');
@@ -212,6 +203,32 @@
                     return false;
                 }
             });
+
+
+
+            $( ".sdate" ).each(function( i ) {
+                var id = $(this).data('id');
+                //alert(id);
+                $('#sdate'+id).MdPersianDateTimePicker({
+                    targetTextSelector: '#start_text'+id,
+                    targetDateSelector: '#start_date'+id,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd',
+                });
+            });
+            $( ".edate" ).each(function( i ) {
+                var id = $(this).data('id');
+                //alert(i);
+                $('#edate'+id).MdPersianDateTimePicker({
+                    targetTextSelector: '#end_text'+id,
+                    targetDateSelector: '#end_date'+id,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd',
+                });
+            });
+
         });
     </script>
 @endsection

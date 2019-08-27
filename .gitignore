@@ -15,6 +15,7 @@ storage/*.key
 workspace.xml
 .env
 .idea
+.idea/
 Homestead.yaml
 Homestead.json
 

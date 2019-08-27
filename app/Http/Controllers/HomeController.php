@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Systems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -26,9 +24,6 @@ class HomeController extends Controller
      */
     public function index() {
         $user = Auth::user();
-        Permission::all();
-        $systems = Systems::all();
-        //dd($systems);
-        return view('home', compact('user', 'systems'));
+        return view('home', compact('user'));
     }
 }

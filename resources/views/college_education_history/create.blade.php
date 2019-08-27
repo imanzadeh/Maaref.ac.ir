@@ -31,9 +31,9 @@
                         </div>
 
                         <div id="rows">
-                            <div class="row" id="row1">
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height "><strong>مقطع تحصیلی</strong></label>
+                            <div class="row border margin-bottom-20 background-div" id="row1" >
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height --}}"><strong>مقطع تحصیلی</strong></label>
 
                                     <select name="grade_id[]" id="grade_id" class="form-control">
                                         <option value="">لطفا مقطع تحصیلی را انتخاب کنید</option>
@@ -43,8 +43,8 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>رشته</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>رشته</strong></label>
 
                                     <select name="field_of_study_id[]" id="field_of_study_id" class="form-control field-of-study" data-id="1">
                                         <option value="">لطفا رشته را انتخاب کنید</option>
@@ -58,8 +58,8 @@
                                            class="form-control other-input-top"/>
                                 </div>
 
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>گرایش</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>گرایش</strong></label>
 
                                     <select name="orientation_id[]" id="orientation_id1" class="form-control orientation" data-id="1">
                                         <option value="">لطفا گرایش را انتخاب کنید</option>
@@ -69,13 +69,13 @@
                                            class="form-control other-input-top"/>
                                 </div>
 
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height "><strong>معدل</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>معدل</strong></label>
                                     <input name="average[]" id="average" class="form-control" type="number" min="10" max="20"/>
                                 </div>
 
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>دانشگاه محل تحصیل</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>دانشگاه محل تحصیل</strong></label>
 
                                     <select name="training_center_id[]" id="training_center_id" class="form-control training_center" data-id="1">
                                         <option value="">لطفا دانشگاه را انتخاب کنید</option>
@@ -89,8 +89,8 @@
                                            class="form-control other-input-top"/>
                                 </div>
 
-                                <div class="form-group col-md-2">
-                                    <label class="control-label text-center label-height "><strong>کشور محل تحصیل</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label {{--text-center label-height--}} "><strong>کشور محل تحصیل</strong></label>
 
                                     <select name="country_id[]" id="country_id" class="form-control country" data-id="1">
                                         <option value="">لطفا کشور محل تحصیل را انتخاب کنید</option>
@@ -104,16 +104,36 @@
                                            class="form-control other-input-top"/>
                                 </div>
 
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height "><strong>تاریخ شروع</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label{{-- text-center label-height--}} "><strong>تاریخ شروع</strong></label>
+                                    <input type="text" name="start_text[]" id="start_text1"
+                                           class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                           aria-label="date1" aria-describedby="date1" autocomplete="off">
+                                    <input type="hidden" name="start_date[]" id="start_date1"
+                                           class="form-control" placeholder="Persian Calendar Date"
+                                           aria-label="date11" aria-describedby="date11" autocomplete="off">
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text cursor-pointer DatePicker-icon sdate" id="sdate1" data-id="1">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </span>
+                                    </div>
 
-                                    <input type="date" name="start_date[]" id="start_date" class="form-control"/>
                                 </div>
 
-                                <div class="form-group col-md-1">
-                                    <label class="control-label text-center label-height {{--{{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}--}}"><strong>تاریخ پایان</strong></label>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label{{-- text-center label-height--}}"><strong>تاریخ پایان</strong></label>
+                                    <input type="text" name="end_text[]" id="end_text1"
+                                           class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
+                                           aria-label="date2" aria-describedby="date2" autocomplete="off">
+                                    <input type="hidden" name="end_date[]" id="end_date1"
+                                           class="form-control" placeholder="Persian Calendar Date"
+                                           aria-label="date12" aria-describedby="date12" autocomplete="off">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text cursor-pointer DatePicker-icon edate" id="edate1">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
 
-                                    <input type="date" name="end_date[]" id="end_date" class="form-control"/>
                                 </div>
 
                             </div>
@@ -146,6 +166,21 @@
 
         $(document).ready(function() {
 
+            $('#sdate1').MdPersianDateTimePicker({
+                targetTextSelector: '#start_text1',
+                targetDateSelector: '#start_date1',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
+            $('#edate1').MdPersianDateTimePicker({
+                targetTextSelector: '#end_text1',
+                targetDateSelector: '#end_date1',
+                enableTimePicker: false,
+                dateFormat: 'yyyy-MM-dd',
+                textFormat: 'yyyy-MM-dd ',
+            });
+
             $("#new_row").click(function () {
                 var val=$("#row_count").val();
                 val++;
@@ -153,7 +188,7 @@
 
                 $("#row1").clone().attr('id',"row"+val).appendTo("#rows");
 
-                $("#row"+val+" label").addClass('display-none');
+                //$("#row"+val+" label").addClass('display-none');
 
                 $("#row"+val+" .field-of-study").attr('data-id',val);
                 $("#row"+val+" .orientation").attr('data-id',val);
@@ -171,10 +206,43 @@
                 $("#row"+val+" #training_center_title1").attr('id',"training_center_title"+val);
                 $("#row"+val+" #country_title1").attr('id',"country_title"+val);
 
+                $("#row"+val+" #start_text1").attr('id',"start_text"+val);
+                $("#row"+val+" #start_date1").attr('id',"start_date"+val);
+                $("#row"+val+" #sdate1").attr('id',"sdate"+val);
+                $("#row"+val+" #sdate"+val).attr('data-id',val);
+
+                $("#row"+val+" #end_text1").attr('id',"end_text"+val);
+                $("#row"+val+" #end_date1").attr('id',"end_date"+val);
+                $("#row"+val+" #edate1").attr('id',"edate"+val);
+                $("#row"+val+" #edate"+val).attr('data-id',val);
+
                 $("#row"+val+" #orientation_title" + val).prop("type", "hidden");
                 $("#row"+val+" #field_of_study_title" + val).prop("type", "hidden");
                 $("#row"+val+" #training_center_title" + val).prop("type", "hidden");
                 $("#row"+val+" #country_title" + val).prop("type", "hidden");
+
+                $("#row"+val+" #average" ).val("");
+                $("#row"+val+" #start_text"+val ).val("");
+                $("#row"+val+" #start_date"+val ).val("");
+                $("#row"+val+" #end_text"+val ).val("");
+                $("#row"+val+" #end_date"+val ).val("");
+
+
+                $('#sdate'+val).MdPersianDateTimePicker({
+                    targetTextSelector: '#start_text'+val,
+                    targetDateSelector: '#start_date'+val,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd ',
+                });
+
+                $('#edate'+val).MdPersianDateTimePicker({
+                    targetTextSelector: '#end_text'+val,
+                    targetDateSelector: '#end_date'+val,
+                    enableTimePicker: false,
+                    dateFormat: 'yyyy-MM-dd',
+                    textFormat: 'yyyy-MM-dd ',
+                });
 
                 $("#row_count").val(val);
             });

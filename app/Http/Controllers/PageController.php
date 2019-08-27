@@ -18,7 +18,7 @@ class PageController extends Controller
 {
     public function index() {
 
-        return view('Pages.Members');
+        return view('Pages.ProfessorServices');
     }
 
     public function ProfessorsList() {
@@ -27,79 +27,7 @@ class PageController extends Controller
             $q->where('name', 'professor');
         })->get();
 
-        $groups = ScientificGroup::all();
-
-        return view('Pages.ProfessorsList', compact('users', 'groups'));
-    }
-
-    public function ProfessorsSearch(Request $request, $group_id, $LastName) {
-
-        if ($group_id != "null" && $LastName != "null") {
-
-            $users = User::whereHas('roles', function ($q) {
-                $q->where('name', 'professor');
-            })
-                ->Where('LastName', 'like', '%' . $LastName . '%')
-                ->WhereHas('professor', function ($q) use ($group_id) {
-                    $q->where('group_id', $group_id);
-                })->get();
-
-            $i = 0;
-            foreach ($users as $user) {
-                $data[$i] = $user;
-                $data[$i]['group'] = $user->professor->getGroup($user->professor->group_id)->title;
-                $data[$i]['level'] = $user->professor->getLevel($user->professor->level_id);
-                $i++;
-            }
-
-        }
-        elseif ($group_id != "null") {
-            $users = User::whereHas('roles', function ($q) {
-                $q->where('name', 'professor');
-            })
-                ->WhereHas('professor', function ($q) use ($group_id) {
-                    $q->where('group_id', $group_id);
-                })->get();
-
-            $i = 0;
-            foreach ($users as $user) {
-                $data[$i] = $user;
-                $data[$i]['group'] = $user->professor->getGroup($user->professor->group_id)->title;
-                $data[$i]['level'] = $user->professor->getLevel($user->professor->level_id);
-                $i++;
-            }
-
-        }
-        elseif ($LastName != "null") {
-            $users = User::whereHas('roles', function ($q) {
-                $q->where('name', 'professor');
-            })
-                ->Where('LastName', 'like', '%' . $LastName . '%')
-                ->get();
-
-            $i = 0;
-            foreach ($users as $user) {
-                $data[$i] = $user;
-                $data[$i]['group'] = $user->professor->getGroup($user->professor->group_id)->title;
-                $data[$i]['level'] = $user->professor->getLevel($user->professor->level_id);
-                $i++;
-            }
-        }
-        else {
-            $users = User::whereHas('roles', function ($q) {
-                $q->where('name', 'professor');
-            })->get();
-
-            $i = 0;
-            foreach ($users as $user) {
-                $data[$i] = $user;
-                $data[$i]['group'] = $user->professor->getGroup($user->professor->group_id)->title;
-                $data[$i]['level'] = $user->professor->getLevel($user->professor->level_id);
-                $i++;
-            }
-        }
-//        dd($data);
-        echo json_encode($data);
+        return view('Pages.ProfessorsList', compact('users'));
     }
 
     public function ProfessorResume($id)

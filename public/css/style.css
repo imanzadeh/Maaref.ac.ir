@@ -813,7 +813,15 @@ body {
     margin: 10px 0;
 }
 
+.background-div{
+    background-color: #f1f5fb;
+    padding: 15px;
+    box-shadow: 0 0 7px -5px #007bff;
+}
 
+.DatePicker-input-with {
+    max-width: 155px !important;
+}
 /****************************************Progress bar style*************************************************/
 *, *::after, *::before {
     box-sizing: border-box;
