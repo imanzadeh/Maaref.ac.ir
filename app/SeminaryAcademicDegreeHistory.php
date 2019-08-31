@@ -22,6 +22,17 @@ class SeminaryAcademicDegreeHistory extends Model
             'official_document.*'=>'required'
         ];
     }
+    public static function rule(){
+        return [
+            'seminary_academic_degree_id'=>'required',
+            'seminary_field_of_study_id'=>'required',
+            'training_center_id'=>'required|numeric',
+            'average'=>'required|numeric',
+            'start_date'=>'required|date',
+            'end_date'=>'required|date',
+            'official_document'=>'required'
+        ];
+    }
 
 
     public function seminaryAcademicDegree()

@@ -796,6 +796,11 @@ body {
     display: block;
 }
 
+.btn-success{
+    background-color: #0c426f !important;
+    border-color:#0c426f !important;
+}
+
 @media screen and (max-width: 600px) {
 
     .display-none{
@@ -890,11 +895,11 @@ Basic Style
 }
 .cd-breadcrumb li.current > *, .cd-multi-steps li.current > * {
     /* selected step */
-    color: #96c03d;
+    color: #f8bf4d;
 }
 .no-touch .cd-breadcrumb label:hover, .no-touch .cd-multi-steps label:hover {
     /* steps already visited */
-    color: #96c03d;
+    color: #f8bf4d;
 }
 .cd-breadcrumb.custom-separator li::after, .cd-multi-steps.custom-separator li::after {
     /* replace the default arrow separator with a custom icon */
@@ -982,8 +987,8 @@ Triangle breadcrumb
     .cd-breadcrumb.triangle li.current > * {
         /* selected step */
         color: #ffffff;
-        background-color: #96c03d;
-        border-color: #96c03d;
+        background-color: #f8bf4d;
+        border-color: #f8bf4d;
     }
     .cd-breadcrumb.triangle li:first-of-type > * {
         padding-right: 1.6em;

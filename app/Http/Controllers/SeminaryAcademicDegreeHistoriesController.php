@@ -50,10 +50,12 @@ class SeminaryAcademicDegreeHistoriesController extends Controller
     {
         //dd($request);
         $count= count($request['seminary_academic_degree_id']);
-        $userId=array();
+        //$userId=array();
         //$officialDocument=array();
 
-        $request->validate(SeminaryAcademicDegreeHistory::role());
+        $req=$request[1];
+        $req->validate(SeminaryAcademicDegreeHistory::rule());
+        //$request->validate(SeminaryAcademicDegreeHistory::role());
 
         $userId = Auth::id();
         $alumniAssociation=AlumniAssociation::where('user_id',$userId)->first();
