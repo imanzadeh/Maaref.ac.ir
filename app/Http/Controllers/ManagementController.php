@@ -40,8 +40,10 @@ class ManagementController extends Controller
             $q->where('name', 'professor');
         })->get();
 
+        $groups = ScientificGroup::all();
+
         $user = Auth::user();
-        return view('members.ProfessorsListManagement', compact('user','professors'));
+        return view('members.ProfessorsListManagement', compact('user','professors', 'groups'));
     }
 
     public function ProfessorDetailsEditForm($id) {

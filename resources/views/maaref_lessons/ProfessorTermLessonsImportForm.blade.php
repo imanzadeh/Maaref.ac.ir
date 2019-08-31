@@ -1,6 +1,7 @@
-@extends('layouts.dashboard')
+@can('users_manage')
+    @extends('layouts.DashboardLayout')
 
-@section('content')
+    @section('content')
 
     <div class="container">
 
@@ -10,7 +11,7 @@
                 <section>
 
                     <div class="container">
-                        <h2 class="main-content-title"> بروزرسانی مشخصات اساتید هیأت علمی از فایل اکسل </h2>
+                        <h2 class="main-content-title"> بروزرسانی و درج دروس ارائه شده ترم جاری اساتید از فایل اکسل </h2>
 
                         @if( count($errors) > 0 )
                             <div class="alert alert-danger">
@@ -69,3 +70,4 @@
     </div>
 
 @endsection
+@endcan

@@ -1,23 +1,25 @@
-@extends('layouts.app')
-@section('content')
-    <h3>لیست تحصیلات دانشگاهی</h3>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-4">
-                <p>
-                    <a class="btn btn-primary" href="{{route('college_education.create')}}">جدید</a>
-                </p>
-                <table class="table float-right">
-                    <thead>
-                    <tr>
-                        <th>
-                            نام تحصیلات دانشگاهی
-                        </th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($collegeEducations as $collegeEducation)
+@can('manage_AlumniAssociation')
+    @extends('layouts.DashboardLayout')
+    @section('content')
+        <div class="container">
+            <section>
+                <h3>لیست تحصیلات دانشگاهی</h3>
+                <div class="row">
+                    <div class="col-md-8 offset-2">
+                        <p>
+                            <a class="btn btn-primary" href="{{route('college_education.create')}}">جدید</a>
+                        </p>
+                        <table class="table float-right">
+                            <thead>
+                            <tr>
+                                <th>
+                                    نام تحصیلات دانشگاهی
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($collegeEducations as $collegeEducation)
                                 <tr>
                                     <td>
                                         <a href="{{route('college_education.detail',[$collegeEducation->id])}}">
@@ -33,10 +35,12 @@
                                         </a>
                                     </td>
                                 </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
-@endsection
+    @endsection
+@endcan

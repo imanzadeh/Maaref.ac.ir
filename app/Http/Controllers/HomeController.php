@@ -28,7 +28,23 @@ class HomeController extends Controller
         $user = Auth::user();
         Permission::all();
         $systems = Systems::all();
-        //dd($systems);
-        return view('home', compact('user', 'systems'));
+        $AllPermissions = $user->getAllPermissions();
+        foreach ($systems as $system) {
+            foreach ($AllPermissions as $per) {
+                if ($per->system_id == $system->id)
+                    $data[] = $system;
+            }
+        }
+        //dd($data);
+        return view('home', compact('user', 'data'));
+    }
+
+    public function MembersMainPage() {
+        $user = Auth::user();
+        return view('members/MainPage', compact('user'));
+    }
+    public function AlumniMainPage() {
+        $user = Auth::user();
+        return view('alumni/AlumniMainPage', compact('user'));
     }
 }

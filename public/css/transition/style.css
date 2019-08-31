@@ -340,9 +340,9 @@ Mask 2
     content: '';
     position: absolute;
     /*z-index: 2;*/
-    top: 25%;
+    top: 0;
     right: 0;
-    height: 60%;
+    height: 100%;
     width: 1px;
     background-color: #d39e00;
 

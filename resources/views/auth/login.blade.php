@@ -21,7 +21,7 @@
         .navbar-dark .navbar-nav .nav-link {color: #0c426f;}
         .text {
             text-align: center;
-            font-size: 12pt;
+            font-size: 10pt;
             color: #7b5d01;
             line-height: 1.8;
             font-weight: bold;
@@ -42,10 +42,10 @@
         }
         .height100{height: 85vh;display:flex;align-items:center;}
 
-        .card-body {padding-right: 40px}
+        .card-body {padding-right: 80px}
         form label {text-align: right;margin-bottom: 10px}
-        form .remember-label {margin-right: 10px;padding-top: 10px;margin-bottom: 10px}
-        form input, form button {height: 40px;font-size: 10pt !important;}
+        form .remember-label {margin-right: 10px;padding-top: 5px;margin-bottom: 10px}
+        form input, form button {height: 30px;font-size: 10pt !important;}
         .alert-danger ul {margin-right: -20px;margin-top: 10px;}
         .alert-danger ul li {font-size: 12px;text-align: right;}
 
@@ -185,19 +185,26 @@
     <div class="row height100">
         <div class="col-lg-8 col-md-12 offset-lg-2 text-center">
             <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ URL::asset('images') }}/logo1.png" class="text-focus-in1" width="150" height="150">
-                    <p class="text text-focus-in3">
-                        دانشگاه معارف اسلامی
-                        <br>
-                        معاونت پژوهش
-                        <br>
-                        مرکز فناوری اطلاعات و ارتباطات
-                    </p>
-                    <h3 class="logo_title text-focus-in2">سامانه جامع و یکپارچه اعضاء</h3>
+                <div class="col-md-5">
+                    <div class="row align-items-center" style="height: 100%">
+                        <div class="col-12">
+                            <img src="{{ URL::asset('images') }}/logo1.png" class="text-focus-in1" width="140" height="140">
+
+                            <p class="text text-focus-in3">
+                                دانشگاه معارف اسلامی
+                                <br>
+                                معاونت پژوهش
+                                <br>
+                                مرکز فناوری اطلاعات و ارتباطات
+                            </p>
+                            <h3 class="logo_title text-focus-in2">سامانه یکپارچه مدیریت</h3>
+                        </div>
+                    </div>
+
+
 
                 </div>
-                <div class="col-md-6" id="menu">
+                <div class="col-md-7" id="menu">
                     <div class="cd-intro">
                         <div class="cd-intro-content mask-2">
                             <div class="content-wrapper">
@@ -222,7 +229,7 @@
                                             </div><br />
                                         @endif
 
-                                        <form method="POST" action="{{ route('login') }}">
+                                        <form method="POST" action="{{ route('login') }}" class="login-form">
                                             @csrf
 
                                             <div class="form-group">

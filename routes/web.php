@@ -56,6 +56,9 @@ Route::post('/resumes/delete_data', 'ResumesController@delete_data')->name('resu
 
 Route::group(['middleware' => ['auth', 'role:admin|professor'], 'prefix' => 'management'], function () {
 
+    /*===================  Members Routes   ===========================*/
+
+    Route::get('members/MainPage', 'HomeController@MembersMainPage')->name('members.mainPage');
     Route::get('members/ProfessorsList', 'ManagementController@ProfessorsList')->name('management.ProfessorsList');
     Route::get('members/ImportProfessorsInfoForm', 'ManagementController@ImportProfessorsInfoForm')->name('management.ImportProfessorsInfoForm');
     Route::post('members/ImportProfessorsInfo', 'ManagementController@ImportProfessorsInfo')->name('management.ImportProfessorsInfo');
@@ -72,7 +75,7 @@ Route::group(['middleware' => ['auth', 'role:admin|professor'], 'prefix' => 'man
     /*==============================================
         Alumni Route
     ==============================================*/
-
+    Route::get('alumni/AlumniMainPage', 'HomeController@AlumniMainPage')->name('alumni.AlumniMainPage');
     //seminary
     Route::get('/seminary/index','SeminariesController@index')->name('seminary.index');
 
@@ -81,7 +84,7 @@ Route::group(['middleware' => ['auth', 'role:admin|professor'], 'prefix' => 'man
     Route::get('alumni/seminary_grade/create','SeminaryGradesController@create')->name('seminary_grade.create');
     Route::post('ر/seminary_grade/store','SeminaryGradesController@store')->name('seminary_grade.store');
     Route::get('alumni/seminary_grade/detail/{seminaryGrade}','SeminaryGradesController@show')->name('seminary_grade.detail');
-    Route::get('ر/seminary_grade/delete/{seminaryGrade}','SeminaryGradesController@destroy')->name('seminary_grade.delete');
+    Route::get('alumni/seminary_grade/delete/{seminaryGrade}','SeminaryGradesController@destroy')->name('seminary_grade.delete');
     Route::get('alumni/seminary_grade/edit/{seminaryGrade}','SeminaryGradesController@edit')->name('seminary_grade.edit');
     Route::patch('alumni/seminary_grade/update/{seminaryGrade}','SeminaryGradesController@update')->name('seminary_grade.update');
 
@@ -238,10 +241,10 @@ Route::group(['middleware' => ['auth', 'role:admin|professor'], 'prefix' => 'man
     Route::get('/maaref_lessons/lesson_types','LessonTypeController@index')->name('lesson_types.index');
     Route::get('/maaref_lessons/lesson_types/create','LessonTypeController@create')->name('lesson_types.create');
     Route::post('/maaref_lessons/lesson_types/store','LessonTypeController@store')->name('lesson_types.store');
-    Route::get('/maaref_lessons/lesson_types/detail/{university}','LessonTypeController@show')->name('lesson_types.detail');
-    Route::get('/maaref_lessons/lesson_types/delete/{university}','LessonTypeController@destroy')->name('lesson_types.delete');
-    Route::get('/maaref_lessons/lesson_types/edit/{university}','LessonTypeController@edit')->name('lesson_types.edit');
-    Route::patch('/maaref_lessons/lesson_types/update/{university}','LessonTypeController@update')->name('lesson_types.update');
+    Route::get('/maaref_lessons/lesson_types/detail/{lesson_type}','LessonTypeController@show')->name('lesson_types.detail');
+    Route::get('/maaref_lessons/lesson_types/delete/{lesson_type}','LessonTypeController@destroy')->name('lesson_types.delete');
+    Route::get('/maaref_lessons/lesson_types/edit/{lesson_type}','LessonTypeController@edit')->name('lesson_types.edit');
+    Route::patch('/maaref_lessons/lesson_types/update/{lesson_type}','LessonTypeController@update')->name('lesson_types.update');
 
     ///lesson_methods
     Route::get('/maaref_lessons/lesson_methods','LessonMethodController@index')->name('lesson_methods.index');

@@ -1,29 +1,32 @@
-@extends('layouts.app')
-@section('content')
-    <h3>لیست دانشکده</h3>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <p>
-                    <a class="btn btn-primary" href="{{route('college.create')}}">جدید</a>
-                </p>
-                <table class="table float-right">
-                    <thead>
-                    <tr>
-                        <th>
-                            نام دانشگاه
-                        </th>
-                        <th>
-                            نام دانشکده
-                        </th>
-                        <th>
-                            تلفن
-                        </th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($colleges as $college)
+@can('manage_AlumniAssociation')
+    @extends('layouts.DashboardLayout')
+    @section('content')
+
+        <div class="container">
+            <section>
+                <h3>لیست دانشکده</h3>
+                <div class="row">
+                    <div class="col-md-8 offset-2">
+                        <p>
+                            <a class="btn btn-primary" href="{{route('college.create')}}">جدید</a>
+                        </p>
+                        <table class="table float-right">
+                            <thead>
+                            <tr>
+                                <th>
+                                    نام دانشگاه
+                                </th>
+                                <th>
+                                    نام دانشکده
+                                </th>
+                                <th>
+                                    تلفن
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($colleges as $college)
                                 <tr>
                                     <td>
                                         <a href="{{route('college.detail',[$college->id])}}">
@@ -49,10 +52,12 @@
                                         </a>
                                     </td>
                                 </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
-@endsection
+    @endsection
+@endcan

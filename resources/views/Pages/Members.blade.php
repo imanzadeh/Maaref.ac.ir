@@ -16,12 +16,25 @@
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
 
     <style>
-        body {margin: 0;padding: 0;background: url('/images/bg.jpg') no-repeat;}
+        body {margin: 0;padding: 0;background: url('images/bg.jpg') no-repeat;}
         .navbar-expand-xl {background-color: transparent;}
-        .navbar-dark .navbar-nav .nav-link {color: #0c426f;}
+        .navbar-dark .navbar-nav li:nth-last-child(1) a:after {
+            width: 0;
+        }
+        .navbar-dark .navbar-nav li a:after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            height: 50%;
+            margin-right: 5px;
+            width: 1px;
+            background-color: #d39e00;
+        }
+        .navbar-dark .navbar-nav .nav-link {color: #0c426f;font-size: 15px;margin-left: 5px;}
+        .navbar-dark .navbar-nav .nav-link:hover {color: #d39e00;}
         .text {
             text-align: center;
-            font-size: 12pt;
+            font-size: 10pt;
             color: #7b5d01;
             line-height: 1.8;
             font-weight: bold;
@@ -53,7 +66,7 @@
             text-align: right;
             float: left;
         }
-        .service_title{width: 270px;float: left;margin-top: 50px;font-size: 20px;color: #0c426f;font-weight: 700;}
+        .service_title{width: 270px;float: left;margin-top: 30px;font-size: 20px;color: #0c426f;font-weight: 700;}
         .service_list li:hover, .service_list li.active {
             -webkit-transition: all .1s;
             -o-transition: all .1s;
@@ -193,7 +206,10 @@
 
             <ul class="navbar-nav mr-auto slide-in-top">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">راهنما</a>
+                    <a class="nav-link" href="#">راهنما</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">ورود به ناحیه کاربری</a>
                 </li>
             </ul>
 
@@ -204,7 +220,7 @@
         <div class="col-lg-8 col-md-12 offset-lg-2 text-center">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/logo1.png" class="text-focus-in1" width="150" height="150">
+                    <img src="images/logo1.png" class="text-focus-in1" width="140" height="140">
                     <p class="text text-focus-in3">
                          دانشگاه معارف اسلامی
                         <br>

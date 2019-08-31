@@ -50,10 +50,14 @@
         input, select {width: 100%;height: 40px;padding: 5px;border: 1px solid #ced4da;border-radius: 0 !important;}
         select {
             background-image: linear-gradient(45deg, transparent 50%, #d39e00 60%), linear-gradient(135deg, #d39e00 40%, transparent 50%) !important;
-            background-position: calc(5% - 28px) 14px, calc(5% - 20px) 14px, 100% 0;
+            background-position: calc(5% - 30px) 14px, calc(5% - 22px) 14px, 100% 0;
             background-size: 7px 10px, 10px 7px;
             background-repeat: no-repeat;
             -webkit-appearance: none;
+        }
+        .form-control:focus {
+            border: 2px solid #80bdff;
+            box-shadow: none;
         }
         .form-group {margin-bottom: 5px}
         .name_input {width: 90%; margin-left: 5px;float: right}
@@ -111,8 +115,8 @@
             position: absolute;
             left: 32%;
             top: 20%;
-            -webkit-animation: blink-1 2s linear 0.2s both;
-            animation: blink-1 2s linear 0.2s both;
+            -webkit-animation: blink-1 1s linear both;
+            animation: blink-1 1s linear both;
         }
 
         /**
@@ -130,13 +134,21 @@
         }
 
         .display_hide {
-            transition:max-height 1s linear;
-            max-height: 1%;
+            /*transition:height 1s linear;
+            height: 10px;
+            padding: 0;
+            margin-bottom: 30px;*/
+            -webkit-animation-name: display_hide;
+            -moz-animation-name: display_hide;
+            animation-name: display_hide;
+            -webkit-animation-duration: 1.5s;
+            -moz-animation-duration: 1.5s;
+            animation-duration: 1.5s;
             padding: 0;
             margin-bottom: 30px;
         }
         .display_hide .section-divider{top: -25px !important; transition: top 0s;}
-        .display_hide ul {opacity: 0; transition: opacity 0s;height: 0;visibility: hidden;}
+        .display_hide ul {opacity: 0; transition: opacity 0s;max-height: 0;visibility: hidden;display: none}
         .display_hide .services-title{
             opacity: 0;
             transition: opacity 0s;
@@ -148,9 +160,9 @@
             -webkit-animation-name: icon_transition;
             -moz-animation-name: icon_transition;
             animation-name: icon_transition;
-            -webkit-animation-duration: .5s;
-            -moz-animation-duration: .5s;
-            animation-duration: .5s;
+            -webkit-animation-duration: .2s;
+            -moz-animation-duration: .2s;
+            animation-duration: .2s;
 
         }
 
@@ -175,9 +187,9 @@
             -moz-animation-name: logo_transition;
             animation-name: logo_transition;
 
-            -webkit-animation-duration: 1.5s;
-            -moz-animation-duration: 1.5s;
-            animation-duration: 1.5s;
+            -webkit-animation-duration: 1s;
+            -moz-animation-duration: 1s;
+            animation-duration: 1s;
             /*-webkit-animation-delay: 2.5s;
             -moz-animation-delay: 2.5s;
             animation-delay: 2.5s;*/
@@ -190,15 +202,20 @@
             -moz-animation-name: search_transition;
             animation-name: search_transition;
 
-            -webkit-animation-duration: 1.5s;
-            -moz-animation-duration: 1.5s;
-            animation-duration: 2s;
+            -webkit-animation-duration: 1s;
+            -moz-animation-duration: 1s;
+            animation-duration: 1.5s;
             /*-webkit-animation-delay: 2.5s;
             -moz-animation-delay: 2.5s;
             animation-delay: 2.5s;*/
             -webkit-animation-fill-mode: backwards;
             -moz-animation-fill-mode: backwards;
             animation-fill-mode: backwards;
+        }
+
+        @keyframes display_hide {
+            0% {max-height: 100%;}
+            100% {max-height: 1%}
         }
 
         @-webkit-keyframes search_transition {
@@ -319,7 +336,7 @@
                                 <div>
                                     <div class="form-group">
                                         {{csrf_field()}}
-                                        <select>
+                                        <select class="form-control">
                                             <option value="" data-default>لطفا دانشکده را انتخاب کنید</option>
                                             <option>دانشکده مطالعات تاریخ و تمدن اسلامی </option>
                                             <option>دانشکده مطالعات انقلاب اسلامی</option>
@@ -327,7 +344,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <select name="group" id="group">
+                                        <select name="group" id="group" class="form-control">
                                             <option value="" selected>لطفا گروه آموزشی را انتخاب کنید</option>
                                             @foreach($groups as $group)
                                                 <option value="{{$group->id}}">گروه آموزشی  {{ $group->title }}</option>
