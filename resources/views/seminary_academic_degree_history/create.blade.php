@@ -28,7 +28,7 @@
                     <div class="row">
 
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>پایه تحصیلی حوزوی/درس خارج</strong></label>
+                            <label class="control-label"><strong>پایه تحصیلی حوزوی/درس خارج</strong><i class="text-danger"> *</i></label>
                             <select name="seminary_grade_id" id="seminary_grade_id" class="form-control">
                                 <option value="">لطفا آخرین پایه تحصیلی/درس خارج را انتخاب کنید</option>
                                 @foreach( $seminaryGrades as $seminaryGrade)
@@ -43,13 +43,15 @@
                                 <div class="row">
 
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>مقطع تحصیلی</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>مقطع تحصیلی</strong><i class="text-danger"> *</i></label>
                                         <input hidden name="seminary_academic_degree_id[]" id="seminary_academic_degree_id" value="{{$seminaryAcademicDegree->id}}"/>
 
                                         <input name="seminary_academic_degree_name[]" readonly id="average" class="form-control" value="{{$seminaryAcademicDegree->title}}"/>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>رشته</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>رشته</strong><i class="text-danger"> *</i></label>
                                         <select name="seminary_field_of_study_id[]" id="seminary_field_of_study_id" class="form-control" data-id="{{$seminaryAcademicDegree->id}}">
                                             <option value="">لطفا رشته را انتخاب کنید</option>
                                             @foreach( $seminaryFieldOfStudies as $seminaryFieldOfStudy)
@@ -61,11 +63,13 @@
                                         <input name="seminary_field_of_study_title[]" type="hidden" id="seminary_field_of_study_title{{$seminaryAcademicDegree->id}}" class="form-control other-input-top"/>
                                     </div>
                                     <div class="form-group col-md-1">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>معدل</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>معدل</strong><i class="text-danger"> *</i></label>
                                         <input name="average[]" id="average" class="form-control" type="number" min="10" max="20"/>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>محل تحصیل</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>محل تحصیل</strong><i class="text-danger"> *</i></label>
                                         <select name="training_center_id[]" id="training_center_id" class="form-control" data-id="{{$seminaryAcademicDegree->id}}">
                                             <option value="">لطفا محل تحصیل را انتخاب کنید</option>
                                             @foreach( $trainingCenters as $trainingCenter)
@@ -78,7 +82,8 @@
                                     </div>
 
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ شروع</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>تاریخ شروع</strong><i class="text-danger"> *</i></label>
                                         <input type="text" name="start_text[]" id="start_text{{$seminaryAcademicDegree->id}}"
                                                class="form-control DatePicker-input DatePicker-input-with" placeholder="انتخاب تاریخ"
                                                aria-label="date1" aria-describedby="date1" autocomplete="off">
@@ -94,7 +99,8 @@
 
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>تاریخ پایان</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>تاریخ پایان</strong><i class="text-danger"> *</i></label>
                                         <input type="text" name="end_text[]" id="end_text{{$seminaryAcademicDegree->id}}"
                                                class="form-control DatePicker-input DatePicker-input-with" placeholder="انتخاب تاریخ"
                                                aria-label="date2" aria-describedby="date2" autocomplete="off">
@@ -109,7 +115,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-1">
-                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}"><strong>مدرک رسمی</strong></label>
+                                        <label class="control-label text-center label-height {{$seminaryAcademicDegree->id==1?"display-block":"display-none"}}">
+                                            <strong>مدرک رسمی</strong><i class="text-danger"> *</i></label>
                                         <input type="hidden" name="official_document[]" id="official_document{{$seminaryAcademicDegree->id}}" class="form-control" value="1"/>
                                         <input type="checkbox" name="official_document1[]" id="official_document" class="form-control official_document" checked data-id="{{$seminaryAcademicDegree->id}}"/>
                                     </div>

@@ -33,7 +33,7 @@
                         <div id="rows">
                             <div class="row border margin-bottom-20 background-div" id="row1" >
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height --}}"><strong>مقطع تحصیلی</strong></label>
+                                    <label class="control-label {{--text-center label-height --}}"><strong>مقطع تحصیلی</strong><i class="text-danger"> *</i></label>
 
                                     <select name="grade_id[]" id="grade_id" class="form-control">
                                         <option value="">لطفا مقطع تحصیلی را انتخاب کنید</option>
@@ -44,7 +44,7 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>رشته</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} "><strong>رشته</strong><i class="text-danger"> *</i></label>
 
                                     <select name="field_of_study_id[]" id="field_of_study_id" class="form-control field-of-study" data-id="1">
                                         <option value="">لطفا رشته را انتخاب کنید</option>
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>گرایش</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} "><strong>گرایش</strong><i class="text-danger"> *</i></label>
 
                                     <select name="orientation_id[]" id="orientation_id1" class="form-control orientation" data-id="1">
                                         <option value="">لطفا گرایش را انتخاب کنید</option>
@@ -70,12 +70,12 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>معدل</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} "><strong>معدل</strong><i class="text-danger"> *</i></label>
                                     <input name="average[]" id="average" class="form-control" type="number" min="10" max="20"/>
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>دانشگاه محل تحصیل</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} "><strong>دانشگاه محل تحصیل</strong><i class="text-danger"> *</i></label>
 
                                     <select name="training_center_id[]" id="training_center_id" class="form-control training_center" data-id="1">
                                         <option value="">لطفا دانشگاه را انتخاب کنید</option>
@@ -90,7 +90,7 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>کشور محل تحصیل</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} "><strong>کشور محل تحصیل</strong><i class="text-danger"> *</i></label>
 
                                     <select name="country_id[]" id="country_id" class="form-control country" data-id="1">
                                         <option value="">لطفا کشور محل تحصیل را انتخاب کنید</option>
@@ -105,7 +105,7 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label{{-- text-center label-height--}} "><strong>تاریخ شروع</strong></label>
+                                    <label class="control-label{{-- text-center label-height--}} "><strong>تاریخ شروع</strong><i class="text-danger"> *</i></label>
                                     <input type="text" name="start_text[]" id="start_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date1" aria-describedby="date1" autocomplete="off">
@@ -121,7 +121,7 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label{{-- text-center label-height--}}"><strong>تاریخ پایان</strong></label>
+                                    <label class="control-label{{-- text-center label-height--}}"><strong>تاریخ پایان</strong><i class="text-danger"> *</i></label>
                                     <input type="text" name="end_text[]" id="end_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date2" aria-describedby="date2" autocomplete="off">

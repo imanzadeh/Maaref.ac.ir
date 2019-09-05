@@ -34,15 +34,15 @@
                         <div id="rows">
                             <div class="row" id="row1">
                                 <div class="form-group col-md-4">
-                                    <label class="control-label text-center label-height "><strong>شماره پرونده</strong></label>
+                                    <label class="control-label text-center label-height "><strong>شماره پرونده</strong><i class="text-danger"> *</i></label>
                                     <input name="file_number[]" id="file_number" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label class="control-label text-center label-height "><strong>شماره مجوز</strong></label>
+                                    <label class="control-label text-center label-height "><strong>شماره مجوز</strong><i class="text-danger"> *</i></label>
                                     <input name="license_number[]" id="license_number" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label class="control-label text-center label-height "><strong>تاریخ صدور</strong></label>
+                                    <label class="control-label text-center label-height "><strong>تاریخ صدور</strong><i class="text-danger"> *</i></label>
                                     <input type="text" name="issue_text[]" id="issue_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date1" aria-describedby="date1" autocomplete="off">

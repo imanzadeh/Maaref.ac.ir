@@ -34,7 +34,8 @@
                         <div id="rows">
                             <div class="row border margin-bottom-20 background-div" id="row1">
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>نوع مرکز تبلیغی</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} ">
+                                        <strong>نوع مرکز تبلیغی</strong><i class="text-danger"> *</i></label>
                                     <select name="training_center_type_id[]" id="training_center_type_id1"
                                             class="form-control training_center_type" data-id="1">
                                         <option value="">لطفا نوع مرکز تبلیغی را انتخاب کنید</option>
@@ -44,7 +45,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>نام مرکز تبلیغی</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} ">
+                                        <strong>نام مرکز تبلیغی</strong><i class="text-danger"> *</i></label>
                                     <select name="training_center_id[]" id="training_center_id1"
                                             class="form-control training_center" data-id="1">
                                         <option value="">لطفا نام مرکز تبلیغی را انتخاب کنید</option>
@@ -58,7 +60,8 @@
                                            class="form-control other-input-top"/>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>محل تبلیغ</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} ">
+                                        <strong>محل تبلیغ</strong><i class="text-danger"> *</i></label>
                                     <select name="advertising_record_place_id[]" id="advertising_record_place_id1"
                                             class="form-control advertising_record_place" data-id="1" >
                                         <option value="">لطفا محل تبلیغ را انتخاب کنید</option>
@@ -72,7 +75,8 @@
                                            class="form-control other-input-top"/>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label{{-- text-center label-height--}} "><strong>تاریخ شروع</strong></label>
+                                    <label class="control-label{{-- text-center label-height--}} ">
+                                        <strong>تاریخ شروع</strong><i class="text-danger"> *</i></label>
                                     <input type="text" name="start_text[]" id="start_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date1" aria-describedby="date1" autocomplete="off">
@@ -88,7 +92,8 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <label class="control-label{{-- text-center label-height--}}"><strong>تاریخ پایان</strong></label>
+                                    <label class="control-label{{-- text-center label-height--}}">
+                                        <strong>تاریخ پایان</strong><i class="text-danger"> *</i></label>
                                     <input type="text" name="end_text[]" id="end_text1"
                                            class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                            aria-label="date2" aria-describedby="date2" autocomplete="off">
@@ -103,11 +108,13 @@
 
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>نشانی موسسه</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} ">
+                                        <strong>نشانی موسسه</strong><i class="text-danger"> *</i></label>
                                     <input name="address[]" id="address" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="control-label {{--text-center label-height--}} "><strong>تلفن</strong></label>
+                                    <label class="control-label {{--text-center label-height--}} ">
+                                        <strong>تلفن</strong><i class="text-danger"> *</i></label>
                                     <input name="phone[]" id="phone" class="form-control"/>
                                 </div>
                             </div>

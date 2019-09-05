@@ -28,35 +28,35 @@
                             @for($id = 1; $id <= $count; $id++)
                                 <div class="row" id="row{{$id}}">
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نام</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نام</strong><i class="text-danger"> *</i></label>
                                         <input name="first_name[]" id="first_name" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نام خانوادگی</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نام خانوادگی</strong><i class="text-danger"> *</i></label>
                                         <input name="last_name[]" id="last_name" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-1">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نوع رابطه</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نوع رابطه</strong><i class="text-danger"> *</i></label>
                                         <input name="relation_type[]" id="relation_type" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-1">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نحوه آشنایی</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نحوه آشنایی</strong><i class="text-danger"> *</i></label>
                                         <input name="acquaintance_method[]" id="acquaintance_method" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-1">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>مدت آشنایی</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>مدت آشنایی</strong><i class="text-danger"> *</i></label>
                                         <input type="number" min="0" max="100" name="acquaintance_time[]" id="acquaintance_time" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-1">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>شغل معرف</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>شغل معرف</strong><i class="text-danger"> *</i></label>
                                         <input name="reference_job[]" id="reference_job" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نشانی محل کار یا سکونت</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>نشانی محل کار یا سکونت</strong><i class="text-danger"> *</i></label>
                                         <input name="address[]" id="address" class="form-control"/>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>تلفن</strong></label>
+                                        <label class="control-label text-center label-height {{$id==1?"display-block":"display-none"}}"><strong>تلفن</strong><i class="text-danger"> *</i></label>
                                         <input name="phone[]" id="phone" class="form-control"/>
                                     </div>
                                 </div>

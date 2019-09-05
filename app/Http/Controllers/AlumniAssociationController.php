@@ -49,7 +49,7 @@ class AlumniAssociationController extends Controller
      */
     public function index()
     {
-        $userId=Auth::id();
+        $userId=8;//Auth::id();
         $alumniAssociation=AlumniAssociation::where('user_id',$userId)->first();
         $seminaryAcademicDegreesHistories=SeminaryAcademicDegreeHistory::where('user_id',$userId)->get();
         $collegeEducationHistories=CollegeEducationHistory::where('user_id',$userId)->get();
@@ -109,6 +109,7 @@ class AlumniAssociationController extends Controller
         $maritalStatuses=MaritalStatus::all();
         $provinces=Province::all();
         $publicConscriptionStatuses=PublicConscriptionStatus::all();
+
         return view('alumni/alumni_association_register', compact(['religions',
             'countries','maritalStatuses','provinces','publicConscriptionStatuses']));
     }
@@ -158,7 +159,7 @@ class AlumniAssociationController extends Controller
             'public_conscription_status_id'=>$request['public_conscription_status_id'],
             'conscription_end_date'=>$request['conscription_end_date'],
             'seminary_grade_id'=>$request['seminary_grade_id'],
-            'user_id'=>Auth::id(),
+            'user_id'=>8//Auth::id(),
         ]);
 
         //***********************************

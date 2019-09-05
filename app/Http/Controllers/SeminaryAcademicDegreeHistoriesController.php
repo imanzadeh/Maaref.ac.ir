@@ -53,17 +53,29 @@ class SeminaryAcademicDegreeHistoriesController extends Controller
         //$userId=array();
         //$officialDocument=array();
 
-        $req=$request[1];
-        $req->validate(SeminaryAcademicDegreeHistory::rule());
-        //$request->validate(SeminaryAcademicDegreeHistory::role());
+        for ($i=0;$i<$count;$i++){
+            if (isset($request['seminary_field_of_study_id'][$i])) {
 
-        $userId = Auth::id();
+                $req = Request::create('', 'GET', ['seminary_academic_degree_id' => $request['seminary_academic_degree_id'][$i],
+                    'seminary_field_of_study_id' => $request['seminary_field_of_study_id'][$i],
+                    'training_center_id' => $request['training_center_id'][$i],
+                    'average' => $request['average'][$i],
+                    'start_date' => $request['start_date'][$i],
+                    'end_date' => $request['end_date'][$i],
+                    'official_document' => $request['official_document'][$i]]);
+
+                $req->validate(SeminaryAcademicDegreeHistory::rule(),SeminaryAcademicDegreeHistory::custom_message($i+1));
+
+            }
+        }
+
+                $userId = 9;//Auth::id();
         $alumniAssociation=AlumniAssociation::where('user_id',$userId)->first();
         $alumniAssociation->seminary_grade_id=$request['seminary_grade_id'];
         $alumniAssociation->save();
 
         for ($i=0;$i<$count;$i++){
-            if (isset($request['seminary_academic_degree_id'][$i])) {
+            if (isset($request['seminary_field_of_study_id'][$i])) {
 
                 $seminaryAcademicDegreeHistory=SeminaryAcademicDegreeHistory::create([
                     'seminary_academic_degree_id' => $request['seminary_academic_degree_id'][$i],

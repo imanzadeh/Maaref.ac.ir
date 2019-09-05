@@ -24,23 +24,23 @@
                     {{csrf_field()}}
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>نام پدر</strong></label>
+                            <label class="control-label"><strong>نام پدر</strong><i class="text-danger"> *</i></label>
                             <input class="form-control" id="father_name" name="father_name"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>شماره شناسنامه</strong></label>
+                            <label class="control-label"><strong>شماره شناسنامه</strong><i class="text-danger"> *</i></label>
                             <input type="number" maxlength="10" name="birth_certificate_number" id="birth_certificate_number" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>محل تولد</strong></label>
+                            <label class="control-label"><strong>محل تولد</strong><i class="text-danger"> *</i></label>
                             <input name="birth_place" id="birth_place" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>محل صدور</strong></label>
+                            <label class="control-label"><strong>محل صدور</strong><i class="text-danger"> *</i></label>
                             <input name="issue_place" id="issue_place" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>مذهب</strong></label>
+                            <label class="control-label"><strong>مذهب</strong><i class="text-danger"> *</i></label>
                             <select name="religion_id" id="religion_id" class="form-control">
                                 <option value="">لطفا ملیت را انتخاب کنید</option>
                                 @foreach( $religions as $religion)
@@ -49,7 +49,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>تابعیت</strong></label>
+                            <label class="control-label"><strong>تابعیت</strong><i class="text-danger"> *</i></label>
                             <select name="country_id" id="country_id" class="form-control">
                                 <option value="">لطفا ملیت را انتخاب کنید</option>
                                 @foreach( $countries as $country)
@@ -58,7 +58,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>وضعیت تاهل</strong></label>
+                            <label class="control-label"><strong>وضعیت تاهل</strong><i class="text-danger"> *</i></label>
                             <select name="marital_status_id" id="marital_status_id" class="form-control">
                                 <option value="">لطفا وضعیت تاهل را انتخاب کنید</option>
                                 @foreach( $maritalStatuses as $maritalStatus)
@@ -67,19 +67,19 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>تلفن محل کار</strong></label>
+                            <label class="control-label"><strong>تلفن محل کار</strong><i class="text-danger"> *</i></label>
                             <input name="work_place_phone" id="work_place_phone" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>تلفن منزل</strong></label>
+                            <label class="control-label"><strong>تلفن منزل</strong><i class="text-danger"> *</i></label>
                             <input name="home_phone" id="home_phone" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>تلفن ضروری</strong></label>
+                            <label class="control-label"><strong>تلفن ضروری</strong><i class="text-danger"> *</i></label>
                             <input name="required_phone" id="required_phone" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>استان</strong></label>
+                            <label class="control-label"><strong>استان</strong><i class="text-danger"> *</i></label>
                             <select class="form-control" id="province_id" name="province_id">
                                 <option value="">لطفا استان را انتخاب کنید</option>
                                 @foreach($provinces as $province)
@@ -88,7 +88,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>شهر</strong></label>
+                            <label class="control-label"><strong>شهر</strong><i class="text-danger"> *</i></label>
                             <select class="form-control" id="city_id" name="city_id">
 
                             </select>
@@ -96,11 +96,11 @@
                                    class="form-control other-input-top"/>
                         </div>
                         <div class="form-group col-md-12">
-                            <label class="control-label"><strong>نشانی کامل محل سکونت</strong></label>
+                            <label class="control-label"><strong>نشانی کامل محل سکونت</strong><i class="text-danger"> *</i></label>
                             <input name="home_Address" id="home_Address" class="form-control"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>وضعیت نظام وظیفه</strong></label>
+                            <label class="control-label"><strong>وضعیت نظام وظیفه</strong><i class="text-danger"> *</i></label>
                             <select name="public_conscription_status_id" id="public_conscription_status_id" class="form-control">
                                 <option value="">لطفا وضعیت نظام وظیفه را انتخاب کنید</option>
                                 @foreach($publicConscriptionStatuses as $publicConscriptionStatus)
@@ -109,7 +109,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="control-label"><strong>تاریخ پایان خدمت</strong></label>
+                            <label class="control-label"><strong>تاریخ پایان خدمت</strong><i class="text-danger"> *</i></label>
                             <input type="text" name="conscription_end_text" id="conscription_end_text"
                                    class="form-control DatePicker-input" placeholder="انتخاب تاریخ"
                                    aria-label="date1" aria-describedby="date1" autocomplete="off">

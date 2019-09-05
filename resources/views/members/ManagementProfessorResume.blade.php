@@ -1,30 +1,29 @@
-@extends('layouts.dashboard')
+@can('users_manage')
+    @extends('layouts.DashboardLayout')
 
-@section('content')
-
-
+    @section('content')
 
     <div class="row">
         <div class="form-group col-md-12">
             <section>
                 <div class="container">
 
-                    <h2 class="main-content-title"> مدیریت رزومه </h2>
+                    <h3 class="main-content-title"> مدیریت رزومه </h3>
 
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-xs-12">
                             <img src="/images/UsersPic/{{$professor->pic}}" class="profile-pic">
-                            <div class="margin-top-20">
+                            <div class="margin-top-20 professor_manage_link">
                                 <a href="{{ route('management.professor_edit_form', [$professor->id]) }}">ویرایش مشخصات</a>
                                 <br>
                                 <a href="{{ route('management.ImportProfessorResumesForm', [$professor->id]) }}">بارگذاری از فایل اکسل</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-5 col-sm-12">
-                            <label class="form-inline margin-top-20 professor_name bottom_border_yellow">
-                                <span class="w-100">
+                            <label class="form-inline professor_name bottom_border_yellow">
+                                <spam class="w-100">
                                     {{$professor->FirstName . " " . $professor->LastName }}
-                                </span>
+                                </spam>
                             </label>
 
                             <label class="form-inline margin-top-15"><strong> گروه آموزشی:&ensp;</strong><a
@@ -486,4 +485,5 @@
 
     </script>
 
-@endsection
+    @endsection
+@endcan

@@ -9,10 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-rtl.css') }}" rel="stylesheet">
@@ -22,7 +18,7 @@
     <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/jalali_calendar.js') }}" defer></script>
     <script src="{{ asset('js/DateTimePicker.js') }}" defer></script>
@@ -31,9 +27,6 @@
 <body>
 
     <div class="page-wrapper chiller-theme toggled">
-        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-            <i class="fas fa-angle-double-left"></i>
-        </a>
 
         @include('layouts.dashboard_menu')
 

@@ -1,5 +1,7 @@
-@extends('layouts.dashboard')
-@section('content')
+@can('users_manage')
+    @extends('layouts.DashboardLayout')
+
+    @section('content')
 
     <div class="container">
 
@@ -30,7 +32,7 @@
                             </div>
                         @endif
                         <h5 class="margin-top-30 margin-bottom-30"><strong style="color: #F70000;">نکته: </strong>ترتیب فیلدها در فایل اکسل باید به ترتیب زیر باشد</h5>
-                        <table border="1" class="table-responsive-xl margin-bottom-30">
+                        <table border="1" class="table-responsive table-responsive-xl margin-bottom-30">
                             <tr>
                                 <th>شماره شناسایی</th>
                                 <th>لقب</th>
@@ -68,3 +70,4 @@
     </div>
 
 @endsection
+@endcan

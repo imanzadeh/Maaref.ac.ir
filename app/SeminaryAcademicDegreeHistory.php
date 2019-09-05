@@ -34,6 +34,12 @@ class SeminaryAcademicDegreeHistory extends Model
         ];
     }
 
+    public static function custom_message($id){
+        return [
+            'required'=>'فیلد :attribute در سطر '.$id.' اجباری می باشد'
+        ];
+    }
+
 
     public function seminaryAcademicDegree()
     {
