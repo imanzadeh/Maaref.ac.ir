@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="page-wrapper chiller-theme toggled">
+    <div class="page-wrapper">
         {{--<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
             <i class="fas fa-angle-double-left"></i>
         </a>--}}
@@ -81,8 +81,21 @@
             .umcGalleryWrapperItem .appIcon.exams {
                 background: url(images/icons/registration.png) no-repeat center center / contain;
             }
+            .umcGalleryWrapperItem .thesis_search {
+                background: url(images/icons/thesis_search.png) no-repeat center center / contain;
+            }
             .umcGalleryWrapperItem .appIcon.AlumniAssociation {
                 background: url(images/icons/AlumniAssociation.png) no-repeat center center / contain;
+            }
+            .umcGalleryWrapperItem .appStatusIcon {
+                background: url(images/icons/star.png) no-repeat center center / contain;
+                height: 40px;
+                width: 33px;
+                position: absolute;
+                top: -4px;
+                left: 20px;
+                z-index: 2;
+                transition: opacity 0.5s;
             }
             .umcGalleryWrapperItem.hover .contentWrapper {
                 bottom: 0;
@@ -139,6 +152,39 @@
                 transition: box-shadow 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
                 box-shadow: 0 1px 12px 4px rgba(1,0,0,0.118), 0 1px 4px rgba(0,1,0,0.118);
             }
+            .systems_list
+            {
+                position:relative;
+                -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+                -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+                /*box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
+                box-shadow: -5px -4px 11px -10px rgba(0, 0, 0, 0.3), 16px -10px 20px -21px rgba(0, 0, 0, 0.2);
+            }
+            .systems_list:before, .systems_list:after
+            {
+                content:"";
+                position:absolute;
+                z-index:-1;
+                -webkit-box-shadow:0 0 15px #6c757d70;
+                -moz-box-shadow:0 0 15px #6c757d70;
+                box-shadow: 0 0 15px #6c757d70;
+                top: 0;
+                bottom: 0;
+                left: 0px;
+                right: 0px;
+                /*-moz-border-radius:100px / 10px;
+                border-radius:100px / 10px;*/
+            }
+            .dashboard_menu:after
+            {
+                right:10px;
+                left:auto;
+                -webkit-transform:skew(8deg) rotate(3deg);
+                -moz-transform:skew(8deg) rotate(3deg);
+                -ms-transform:skew(8deg) rotate(3deg);
+                -o-transform:skew(8deg) rotate(3deg);
+                transform:skew(8deg) rotate(3deg);
+            }
             nav {
                 background: #fff;
                 box-shadow: 0 0 6px -6px #333;
@@ -148,45 +194,10 @@
             nav ul {list-style: none;margin-right: -15px;}
             nav ul li input {margin-left: 10px}
             nav h4 {margin-right: 25px;margin-bottom: 20px}
-            label input {
-                display: none; /* Hide the default checkbox */
-            }
 
-            /* Style the artificial checkbox */
-            label span {
-                height: 15px;
-                width: 15px;
-                margin-left: 5px;
-                border: 1px solid grey;
-                display: inline-block;
-                position: relative;
-                top: 3px;
-            }
-            /* Style its checked state...with a ticked icon */
-            [type=checkbox]:checked + span:before {
-                content: '\2714';
-                position: absolute;
-                top: -4px;
-                left: 1px;
-            }
-            [type=checkbox]:checked + span {background: #f0bf00}
-            .logout_div {padding: 18px;background: #f0bf00;box-shadow: 0 0 6px -6px #333;text-align: center}
-            .logout_div a {color: #212529;font-weight: 700;font-size: 15px}
-            .logout_div a:hover {color: #1c75bc;text-decoration: none;}
-            .logout_div a i {margin-left: 5px;position: relative;top: 2px;}
-            #systems_list .row {margin-bottom: 30px}
-            .systems_title {padding-bottom: 15px;margin-bottom: 15px}
-            .systems_title:after {
-                background: #f0bf00 none repeat scroll 0 0;
-                content: "";
-                display: block;
-                height: 2px;
-                margin-top: 15px;
-                width: 100px;
-            }
         </style>
         <main class="page-content">
-            <div class="container-fluid" style="background: #ffffff;padding: 20px 0 !important;">
+            <div class="container-fluid management-header">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 text-center">
@@ -208,7 +219,15 @@
                     <div class="row">
                         <div class="col-md-3">
                             <section>
-                                <nav>
+                                <nav class="systems_list text-center profile-info">
+                                    <img src="/images/UsersPic/{{$user->pic}}" width="120" height="120">
+                                    <div class="person-name">{{$user->FirstName . " ". $user->LastName}}</div>
+                                    <div class="person-details">
+                                        <i class="fas fa-user"></i>
+                                        سمت: {{$user->getRoleNames()[0]}}
+                                    </div>
+                                </nav>
+                                <nav class="systems_list">
                                     <h4>دسته بندی سامانه ها</h4>
                                     <ul>
                                         <li>
@@ -280,7 +299,7 @@
                                 <div class="logout_div">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-power-off"></i>
+                                        <i class="fas fa-sign-out-alt"></i>
                                         <span>خروج از سامانه</span>
                                     </a>
 
@@ -305,6 +324,15 @@
                                     @endphp
 
                                     @foreach($data as $system)
+                                        @if($system->mainPage == "members.mainPage")
+                                            @php
+                                                $star_icon = "noStatus";
+                                            @endphp
+                                        @else
+                                            @php
+                                                $star_icon = "";
+                                            @endphp
+                                        @endif
                                         @if($system->type == "education")
                                             @php
                                                 $education .= '<div class="col-md-3 '.$system->type.'">
@@ -326,8 +354,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="appStatusIcon noStatus"></div>
-                                                            <div class="appStatusIcon appStatusHoverIcon noStatus"></div>
+                                                            <div class="appStatusIcon '.$star_icon.'"></div>
+                                                            <div class="appStatusIcon appStatusHoverIcon '.$star_icon.'"></div>
                                                         </div>
                                                     </a>
                                                 </div>';
@@ -355,8 +383,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="appStatusIcon noStatus"></div>
-                                                            <div class="appStatusIcon appStatusHoverIcon noStatus"></div>
+                                                            <div class="appStatusIcon '.$star_icon.'"></div>
+                                                            <div class="appStatusIcon appStatusHoverIcon '.$star_icon.'"></div>
                                                         </div>
                                                     </a>
                                                 </div>';
@@ -384,8 +412,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="appStatusIcon noStatus"></div>
-                                                            <div class="appStatusIcon appStatusHoverIcon noStatus"></div>
+                                                            <div class="appStatusIcon '.$star_icon.'"></div>
+                                                            <div class="appStatusIcon appStatusHoverIcon '.$star_icon.'"></div>
                                                         </div>
                                                     </a>
                                                 </div>';
@@ -413,8 +441,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="appStatusIcon noStatus"></div>
-                                                            <div class="appStatusIcon appStatusHoverIcon noStatus"></div>
+                                                            <div class="appStatusIcon '.$star_icon.'"></div>
+                                                            <div class="appStatusIcon appStatusHoverIcon '.$star_icon.'"></div>
                                                         </div>
                                                     </a>
                                                 </div>';
@@ -442,8 +470,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="appStatusIcon noStatus"></div>
-                                                            <div class="appStatusIcon appStatusHoverIcon noStatus"></div>
+                                                            <div class="appStatusIcon '.$star_icon.'"></div>
+                                                            <div class="appStatusIcon appStatusHoverIcon '.$star_icon.'"></div>
                                                         </div>
                                                     </a>
                                                 </div>';
@@ -471,8 +499,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="appStatusIcon noStatus"></div>
-                                                            <div class="appStatusIcon appStatusHoverIcon noStatus"></div>
+                                                            <div class="appStatusIcon '.$star_icon.'"></div>
+                                                            <div class="appStatusIcon appStatusHoverIcon '.$star_icon.'"></div>
                                                         </div>
                                                     </a>
                                                 </div>';

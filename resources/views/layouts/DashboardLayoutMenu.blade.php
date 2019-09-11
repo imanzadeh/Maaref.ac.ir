@@ -1,4 +1,3 @@
-@inject('request', 'Illuminate\Http\Request')
 
 @if($user->can('users_manage') && ($request->segment(2) == 'members' || $request->segment(2) == 'maaref_lessons' || $request->segment(2) == 'professor_term_lessons'))
 
@@ -69,17 +68,17 @@
 
 @if($user->can('manage_AlumniAssociation') && $request->segment(2) == 'alumni')
 
-    <li class="{{ $request->segment(2) == 'grade' ? 'active' : '' }}">
+    <li class="{{ $request->segment(3) == 'grade' ? 'active' : '' }}">
         <a href="{{route('grade.index')}}">
             <span class="menu-text">مدیریت مقاطع</span>
         </a>
     </li>
-    <li class="{{ $request->segment(2) == 'field_of_study' ? 'active' : '' }}">
+    <li class="{{ $request->segment(3) == 'field_of_study' ? 'active' : '' }}">
         <a href="{{route('field_of_study.index')}}">
             <span class="menu-text">مدیریت رشته ها</span>
         </a>
     </li>
-    <li class="{{ $request->segment(2) == 'orientation' ? 'active' : '' }}">
+    <li class="{{ $request->segment(3) == 'orientation' ? 'active' : '' }}">
         <a href="{{route('orientation.index')}}">
             <span class="menu-text">مدیریت گرایش ها</span>
         </a>

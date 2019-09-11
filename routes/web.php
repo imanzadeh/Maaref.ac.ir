@@ -28,6 +28,9 @@ Auth::routes([
 ]);
 
 Route::get('refreshCaptcha', 'Auth\LoginController@refreshCaptcha');
+Route::post('login2', 'Auth\LoginController@login2')->name('login2');
+Route::get('LogoutAjax', 'Auth\LoginController@LogoutAjax')->name('LogoutAjax');
+Route::post('UserLoginCheck', 'Auth\LoginController@UserLoginCheck')->name('user.login.check');
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 
@@ -151,6 +154,9 @@ Route::group(['middleware' => ['auth', 'role:admin|professor'], 'prefix' => 'man
     Route::get('alumni/grade/delete/{grade}','GradesController@destroy')->name('grade.delete');
     Route::get('alumni/grade/edit/{grade}','GradesController@edit')->name('grade.edit');
     Route::patch('alumni/grade/update/{grade}','GradesController@update')->name('grade.update');
+    Route::get('alumni/grade/fetch','GradesController@FetchData')->name('grade.FetchData');
+    Route::post('alumni/grade/DeleteData','GradesController@DeleteData')->name('grade.DeleteData');
+    Route::post('alumni/grade/UpdateData','GradesController@UpdateData')->name('grade.UpdateData');
 
     //field_of_study
     Route::get('alumni/field_of_study','FieldOfStudiesController@index')->name('field_of_study.index');
